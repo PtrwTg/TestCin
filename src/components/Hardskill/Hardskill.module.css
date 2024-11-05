@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    height: 87.5%;
+    height: 100%;
 }
 .title{
 font-family: 'inter', sans-serif;
@@ -13,6 +13,7 @@ text-align: start;
 }
 .imgarea{
     margin-top: 5%;
+    height: 85%;
 }
 .img {
     width: 100%;
