@@ -6,7 +6,7 @@ function Textaboutme() {
   return (
     <div className={styles.container}>
       <div className={styles.contentarea}>
-        <h1 className={styles.Head}>Aboutme</h1>
+        <h1 className={styles.Head}>About me</h1>
         <div className={styles.border}>
         <div className={styles.textarea}>
         <p className={styles.text}>Hi, I'm Cinq, a recent graduate passionate about <br />
