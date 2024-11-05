@@ -1,4 +1,14 @@
-/* Media Queries สำหรับหน้าจอขนาดเล็ก */
+.container{
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.image{
+    max-width: 100%;
+}
+
+
 @media (max-width: 768px) {
     .container {
         padding: 10px; 

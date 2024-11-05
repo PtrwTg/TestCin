@@ -9,23 +9,23 @@
 }
 
 .left {
-    flex: 1; /* กำหนดให้ฝั่งซ้ายใช้พื้นที่ 50% */
+    flex: 1; 
     display: flex;
-    justify-content: center; /* จัดกึ่งกลางแนวนอน */
-    align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+    justify-content: center; 
+    align-items: center; 
     max-width: 40%;
 }
 
 .right {
-    flex: 1; /* กำหนดให้ฝั่งขวาใช้พื้นที่ 50% */
+    flex: 1;
     display: flex;
-    flex-direction: column; /* แบ่งบนล่าง */
+    flex-direction: column;
     justify-content: space-between;
     max-width: 60%;
 }
 
 .top {
-    flex: 1; /* กำหนดให้ส่วนบนใช้พื้นที่ 50% */
+    flex: 1; 
     display: flex;
     justify-content: center;
     align-items: center;
