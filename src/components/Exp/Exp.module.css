@@ -1,0 +1,23 @@
+.title {
+    font-family: 'inter', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 29.05px;
+    text-align: start;
+    
+}
+
+
+
+@media (max-width: 768px) {
+    .progress{
+        width: 72.5%;
+    }
+    .progressarea{
+        display: flex;
+        justify-content: center;
+    }
+    .title{
+        text-align: center;
+    }
+}

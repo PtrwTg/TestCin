@@ -1,0 +1,13 @@
+/* Media Queries สำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; 
+        display: flex;
+        justify-content: center;
+        margin-top: 10%;
+    }
+
+    .image {
+        max-width: 50%; 
+    }
+}

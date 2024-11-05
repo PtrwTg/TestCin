@@ -1,0 +1,28 @@
+.title{
+font-family: "inter", sans-serif;
+font-size: 24px;
+font-weight: 600;
+line-height: 29.05px;
+text-align:left
+}
+.imgarea{
+    margin-top: 5%;
+    justify-content: center;
+}
+.imgarea img {
+    margin-left: 5%;
+    transition: transform 1s ease-out;
+}
+
+.imgarea img:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px){
+    .constainer{
+        width: 100%;
+    }
+    .title{
+        text-align: center;
+    }
+}

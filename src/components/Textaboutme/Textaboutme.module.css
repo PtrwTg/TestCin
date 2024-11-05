@@ -1,0 +1,86 @@
+.container {
+    width: 80%;
+    
+}
+.Head{
+font-family: "inter", sans-serif;
+font-size: 36px;
+font-weight: 600;
+line-height: 43.57px;
+color: #8BB0DB;
+margin-bottom: 0px;
+padding-left: 5%;
+
+}
+.border {
+    border: 2px solid #8BB0DB;
+    border-radius: 30px;
+}
+.textarea {
+font-family: 'Inter', sans-serif;
+font-size: 20px;
+font-weight: 400;
+line-height: 24.2px;
+text-align: center;
+}
+.lasttext {
+    font-family: "inter", sans-serif;
+font-size: 20px;
+font-weight: 400;
+line-height: 24.2px;
+text-align: right;
+max-width: 80%;
+}
+
+.downloadbutton {
+    background-color: #8BB0DB;
+    color: white;
+    border-radius: 50%;
+    width: 86px;
+    height: 86px;
+    font-size: 1.5rem;
+    border: 2px solid #8BB0DB;
+    transition: color 300ms ease-out, background-color 300ms ease-out; /* เพิ่ม transition */
+}
+
+.downloadbutton:hover {
+    color: #8BB0DB; /* เปลี่ยนสีตัวอักษรเป็นสีฟ้า */
+    background-color: white; /* เปลี่ยนพื้นหลังเป็นสีขาว */
+}
+.downloadicon{
+    font-size: 3rem;
+}
+.downloadbottondiv{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-bottom: -6%;
+    margin-right: -5%;
+}
+
+/* Media Queries สำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+    .container {
+        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
+        padding: 10px; /* ปรับ padding สำหรับหน้าจอขนาดเล็ก */
+    }
+
+    .Head {
+        font-size: 28px; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
+        padding-left: 0; /* ปรับ padding สำหรับหน้าจอขนาดเล็ก */
+        text-align: center;
+    }
+
+    .textarea {
+        font-size: 14px; 
+        line-height: 22px;
+    }
+
+    .lasttext {
+        font-size: 12px; 
+        line-height: 22px; 
+        text-align:end; 
+        
+    }
+
+}

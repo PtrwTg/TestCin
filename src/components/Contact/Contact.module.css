@@ -1,0 +1,45 @@
+.buttonarea{
+    display: flex;
+    width: 80%;
+    gap: 20%;
+    margin-top: -10%;
+}
+.buttoncontact {
+    width: 164px;
+    height: 250px;
+    border-radius: 30px;
+    border: 2px solid #8BB0DB;    
+    color: #8BB0DB;
+    font-family: 'Inter', sans-serif;   
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 72.61px;
+    text-align: center;
+    background-color: white;
+    transition: color 300ms ease-out, background-color 300ms ease-out; /* เพิ่ม transition */
+}
+
+.buttoncontact:hover {
+    color: white; 
+    background-color: #8BB0DB; 
+}
+
+
+
+
+@media (max-width: 768px) {
+    .buttonarea {
+        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
+        gap: 10%; /* ปรับช่องว่างระหว่างปุ่ม */
+        margin-top: 20%; /* ปรับ margin-top */
+        height: 20vh;
+    }
+
+    .buttoncontact {
+        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
+        height: auto; /* ปรับความสูงอัตโนมัติ */
+        font-size: 1.5rem; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
+        line-height: normal; /* ปรับความสูงของบรรทัด */
+        margin: 10px;
+    }
+}

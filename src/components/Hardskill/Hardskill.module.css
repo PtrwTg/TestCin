@@ -1,0 +1,24 @@
+.title{
+font-family: 'inter', sans-serif;
+font-size: 24px;
+font-weight: 600;
+line-height: 29.05px;
+text-align: start;
+
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 20px; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
+        line-height: 24px; /* ปรับความสูงของบรรทัดสำหรับหน้าจอขนาดเล็ก */
+        text-align: center; /* จัดกึ่งกลางข้อความ */
+    }
+
+    .imgarea {
+        padding: 10px; /* ปรับ padding สำหรับหน้าจอขนาดเล็ก */
+    }
+
+    .imgarea img {
+        max-width: 100%; /* ปรับขนาดภาพให้เล็กลงสำหรับหน้าจอขนาดเล็ก */
+    }
+}

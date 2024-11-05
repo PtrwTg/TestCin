@@ -1,0 +1,127 @@
+.containerabout {
+    display: flex;
+    justify-content: space-between; 
+    height: 100vh;
+}
+
+.left {
+    flex: 1; /* กำหนดให้ฝั่งซ้ายใช้พื้นที่ 50% */
+    display: flex;
+    justify-content: center; /* จัดกึ่งกลางแนวนอน */
+    align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+    max-width: 40%;
+}
+
+.right {
+    flex: 1; /* กำหนดให้ฝั่งขวาใช้พื้นที่ 50% */
+    display: flex;
+    flex-direction: column; /* แบ่งบนล่าง */
+    justify-content: space-between;
+    max-width: 60%;
+}
+
+.top {
+    flex: 1; /* กำหนดให้ส่วนบนใช้พื้นที่ 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom {
+    flex: 1; /* กำหนดให้ส่วนล่างใช้พื้นที่ 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 87.5%;
+    height: 120px;
+    border-radius: 30px;
+    border: 1.5px solid #8BB0DB;
+    display: flex;
+    justify-content: center; /* จัดกึ่งกลางแนวนอน */
+    align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+    margin: auto; /* จัดกึ่งกลางแนวนอน */
+}
+.containerdetail {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.detailleft {
+    flex: 2; /* กำหนดให้ฝั่งซ้ายใช้พื้นที่มากกว่า */
+    display: flex;
+    flex-direction: column; /* แบ่งบนล่าง */
+}
+
+.detailright {
+    flex: 1; /* กำหนดให้ฝั่งขวาใช้พื้นที่น้อยกว่า */
+    display: flex;
+    flex-direction: column; /* แบ่งบนล่าง */
+}
+
+.detailleft {
+    justify-content: space-between; /* จัดการพื้นที่ระหว่างส่วนบนและล่าง */
+}
+
+.softwareskill {
+    flex: 1; /* กำหนดให้ส่วนบนของฝั่งซ้ายใช้พื้นที่น้อยกว่า */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exp {
+    flex: 2; /* กำหนดให้ส่วนล่างของฝั่งซ้ายใช้พื้นที่มากกว่า */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailright {
+    justify-content: space-between; /* จัดการพื้นที่ระหว่างส่วนบนและล่าง */
+}
+
+.hardskill, .softskills {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.softwarearea{
+    width: 90%;
+    height: 80%;
+}
+.Exparea{
+    width: 90%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .containerabout {
+        flex-direction: column; /* เปลี่ยนการจัดเรียงเป็นแนวตั้ง */
+        height: auto; /* ปรับความสูงอัตโนมัติ */
+    }
+
+    .left, .right {
+        max-width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
+    }
+
+    .top, .bottom {
+        flex: none; /* ปรับ flex ให้ไม่มีผล */
+        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
+    }
+    .box{
+        height: 2rem;
+        margin-top: 10%;
+    }
+    .containerdetail{
+        flex-direction: column;
+        height: auto;
+    }
+    .softwarearea{
+        width: 75%;
+        height: 80%;
+    }
+}

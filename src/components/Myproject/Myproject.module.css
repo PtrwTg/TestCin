@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.title {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 29.05px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.workarea {
+    width: 80%;
+    margin-top: 10%;
+}
+
+.projectimgarea {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    width: 100%;
+}
+
+.rows1, .rows2, .rows3 {
+    display: flex;
+    justify-content: center;
+    gap: 5%; 
+}
+
+
+/* Media Queries สำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+    .title {
+        font-size: 20px; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
+        line-height: 24px; /* ปรับความสูงของบรรทัดสำหรับหน้าจอขนาดเล็ก */
+    }
+
+    .workarea {
+        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
+        margin-left: 0; /* ปรับ margin สำหรับหน้าจอขนาดเล็ก */
+    }
+
+    .rows1, .rows2, .rows3 {
+        flex-direction: column; /* เปลี่ยนการจัดเรียงเป็นแนวตั้งสำหรับหน้าจอขนาดเล็ก */
+        align-items: center;
+    }
+
+    .projectimgarea img {
+        max-width: 90%;
+        margin-top: 5%;
+    }
+
+    
+}

@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  justify-content: flex-end; /* จัดเรียงปุ่มไปทางขวา */
+  align-items: center;
+  gap: 20px; 
+  padding: 20px;
+  flex-wrap: wrap;
+  height: 10vh;
+}
+
+.aboutMe, .myWork {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem; /* ขนาดฟอนต์ */
+  font-weight: 600;
+  line-height: 1.5rem; /* ความสูงของบรรทัด */
+  text-align: center;
+  width: 248px;
+  height: 36px;
+  padding: 6px 46px;
+  border-radius: 100px;
+  border: 1px solid #000000; /* กำหนดกรอบ */
+  color: #8bb0db;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 300ms ease-out, background-color 300ms ease-out, border-color 300ms ease-out; /* เพิ่ม transition */
+}
+
+.aboutMe:hover, .myWork:hover {
+  color: white; /* เปลี่ยนสีตัวอักษรเป็นสีขาว */
+  background-color: #8bb0db; /* เปลี่ยนพื้นหลังเป็นสีฟ้า */
+  border-color: #8bb0db; /* เปลี่ยนกรอบเป็นสีฟ้า */
+}
+
+/* Media Queries สำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+  .container {
+    justify-content: center; /* จัดเรียงปุ่มให้อยู่ตรงกลางสำหรับหน้าจอขนาดเล็ก */
+  }
+
+  .aboutMe, .myWork {
+    font-size: 1rem; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
+    padding: 4px 20px; /* ปรับ padding สำหรับหน้าจอขนาดเล็ก */
+    width: 100%; /* ปรับขนาดปุ่มให้เต็มความกว้างของหน้าจอ */
+    margin: 5px 0; /* เพิ่ม margin ระหว่างปุ่ม */
+  }
+}
