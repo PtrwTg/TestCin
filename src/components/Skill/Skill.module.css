@@ -1,6 +1,9 @@
+.constainer{
+    width: 100%;
+}
 .title{
 font-family: "inter", sans-serif;
-font-size: 24px;
+font-size: 2rem;
 font-weight: 600;
 line-height: 29.05px;
 text-align:left
@@ -8,8 +11,10 @@ text-align:left
 .imgarea{
     margin-top: 5%;
     justify-content: center;
+    height: 100%;
 }
 .imgarea img {
+    width: 10%;
     margin-left: 5%;
     transition: transform 1s ease-out;
 }

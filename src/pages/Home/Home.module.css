@@ -45,6 +45,7 @@
     margin: auto; /* จัดกึ่งกลางแนวนอน */
 }
 .containerdetail {
+    margin-top: 5%;
     display: flex;
     width: 100%;
     height: 100vh;
