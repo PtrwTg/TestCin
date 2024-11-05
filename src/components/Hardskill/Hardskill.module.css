@@ -17,9 +17,11 @@ font-weight: 600;
 line-height: 29.05px;
 text-align: start;
 }
-
+.imgarea{
+    margin-top: 5%;
+}
 .img{
-    width: 70%;
+    width: 60%;
 }
 
 

@@ -1,24 +1,42 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.containerarea{
+    width: 90%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+}
 .title{
 font-family: 'inter', sans-serif;
-font-size: 24px;
+font-size: 2rem;
 font-weight: 600;
 line-height: 29.05px;
 text-align: start;
-
 }
+.imgarea{
+    margin-top: 5%;
+}
+.img{
+    width: 60%;
+}
+
 
 @media (max-width: 768px) {
     .title {
-        font-size: 20px; 
-        line-height: 24px;
-        text-align: center; 
+        font-size: 20px; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
+        line-height: 24px; /* ปรับความสูงของบรรทัดสำหรับหน้าจอขนาดเล็ก */
+        text-align: center; /* จัดกึ่งกลางข้อความ */
     }
 
     .imgarea {
-        padding: 10px; 
+        padding: 10px; /* ปรับ padding สำหรับหน้าจอขนาดเล็ก */
     }
 
     .imgarea img {
-        max-width: 100%; 
+        max-width: 100%; /* ปรับขนาดภาพให้เล็กลงสำหรับหน้าจอขนาดเล็ก */
     }
 }
