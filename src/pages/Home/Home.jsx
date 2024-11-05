@@ -13,7 +13,7 @@ import Myproject from '../../components/Myproject/Myproject.jsx';
 
 const Home = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <Header />
       <ImageComponent />
       <div className={styles.containerabout}>

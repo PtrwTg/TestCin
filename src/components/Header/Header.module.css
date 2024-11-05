@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-end; /* จัดเรียงปุ่มไปทางขวา */
   align-items: center;
-  gap: 20px; 
+  gap: 3%; 
   padding: 20px;
   flex-wrap: wrap;
   height: 10vh;
@@ -10,19 +10,19 @@
 
 .aboutMe, .myWork {
   font-family: 'Inter', sans-serif;
-  font-size: 1.25rem; /* ขนาดฟอนต์ */
+  font-size: 1.25rem; 
   font-weight: 600;
-  line-height: 1.5rem; /* ความสูงของบรรทัด */
+  line-height: 1.5rem;
   text-align: center;
   width: 248px;
   height: 36px;
   padding: 6px 46px;
   border-radius: 100px;
-  border: 1px solid #000000; /* กำหนดกรอบ */
+  border: 1px solid #000000;
   color: #8bb0db;
   background-color: transparent;
   cursor: pointer;
-  transition: color 300ms ease-out, background-color 300ms ease-out, border-color 300ms ease-out; /* เพิ่ม transition */
+  transition: color 300ms ease-out, background-color 300ms ease-out, border-color 300ms ease-out; 
 }
 
 .aboutMe:hover, .myWork:hover {
