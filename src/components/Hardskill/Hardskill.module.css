@@ -27,13 +27,15 @@ text-align: start;
 
 @media (max-width: 768px) {
     .title {
-        font-size: 20px; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
+        font-size: 2.2rem; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
         line-height: 24px; /* ปรับความสูงของบรรทัดสำหรับหน้าจอขนาดเล็ก */
         text-align: center; /* จัดกึ่งกลางข้อความ */
     }
 
     .imgarea {
         padding: 10px; /* ปรับ padding สำหรับหน้าจอขนาดเล็ก */
+        justify-content: center;
+        display: flex;
     }
 
     .imgarea img {

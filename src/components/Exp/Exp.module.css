@@ -27,4 +27,7 @@
     .title{
         text-align: center;
     }
+    .container{
+       margin-top: 5%;
+    }
 }

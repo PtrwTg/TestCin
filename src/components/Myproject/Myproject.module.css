@@ -41,24 +41,24 @@
 
 /* Media Queries สำหรับหน้าจอขนาดเล็ก */
 @media (max-width: 768px) {
-    .title {
-        font-size: 20px; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
-        line-height: 24px; /* ปรับความสูงของบรรทัดสำหรับหน้าจอขนาดเล็ก */
+    .projectimgarea{
+        display: flex;
+        flex-direction: column;
     }
-
-    .workarea {
-        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
-        margin-left: 0; /* ปรับ margin สำหรับหน้าจอขนาดเล็ก */
+    .rows1{
+        display: flex;
+        flex-direction: column;
+        margin-top: 20%;
     }
-
-    .rows1, .rows2, .rows3 {
-        flex-direction: column; /* เปลี่ยนการจัดเรียงเป็นแนวตั้งสำหรับหน้าจอขนาดเล็ก */
-        align-items: center;
+    .rows2{
+        margin-top: 110%;
+        display: flex;
+        flex-direction: column;
     }
-
-    .projectimgarea img {
-        max-width: 90%;
-        margin-top: 5%;
+    .rows3{
+        margin-top: 180%;
+        display: flex;
+        flex-direction: column;
     }
 
     
