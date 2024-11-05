@@ -5,8 +5,6 @@
     margin-top: -10%;
 }
 .buttoncontact {
-    width: 164px;
-    height: 250px;
     border-radius: 30px;
     border: 2px solid #8BB0DB;    
     color: #8BB0DB;
@@ -23,23 +21,19 @@
     color: white; 
     background-color: #8BB0DB; 
 }
-
-
-
-
 @media (max-width: 768px) {
     .buttonarea {
-        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
-        gap: 10%; /* ปรับช่องว่างระหว่างปุ่ม */
-        margin-top: 20%; /* ปรับ margin-top */
+        width: 100%; 
+        gap: 10%; 
+        margin-top: 20%; 
         height: 20vh;
     }
 
     .buttoncontact {
-        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
-        height: auto; /* ปรับความสูงอัตโนมัติ */
-        font-size: 1.5rem; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
-        line-height: normal; /* ปรับความสูงของบรรทัด */
+        width: auto; 
+        height: auto; 
+        font-size: 1.5rem; 
+        line-height: normal; 
         margin: 10px;
     }
 }
