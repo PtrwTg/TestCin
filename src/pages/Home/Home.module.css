@@ -26,13 +26,10 @@
 
 .top {
     flex: 1; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .bottom {
-    flex: 1; /* กำหนดให้ส่วนล่างใช้พื้นที่ 50% */
+    flex: 1; 
     display: flex;
     justify-content: center;
     align-items: center;

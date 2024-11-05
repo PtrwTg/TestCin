@@ -5,6 +5,7 @@ import { FaArrowDown } from 'react-icons/fa'
 function Textaboutme() {
   return (
     <div className={styles.container}>
+      <div className={styles.contentarea}>
         <h1 className={styles.Head}>Aboutme</h1>
         <div className={styles.border}>
         <div className={styles.textarea}>
@@ -20,7 +21,7 @@ function Textaboutme() {
          </button>
         </div>
         </div>
-        
+        </div>
     </div>
   )
 }
