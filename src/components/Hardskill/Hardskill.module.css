@@ -4,6 +4,12 @@
     justify-content: center;
     height: 100%;
 }
+.containerarea{
+    width: 90%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+}
 .title{
 font-family: 'inter', sans-serif;
 font-size: 2rem;
@@ -11,14 +17,11 @@ font-weight: 600;
 line-height: 29.05px;
 text-align: start;
 }
-.imgarea{
-    margin-top: 5%;
-    height: 85%;
+
+.img{
+    width: 70%;
 }
-.img {
-    width: 100%;
-    height: auto;
-}
+
 
 @media (max-width: 768px) {
     .title {
