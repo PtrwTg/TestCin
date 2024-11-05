@@ -78,18 +78,17 @@ margin-left: 10%;
 @media (max-width: 768px) {
     .container {
         width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
-        padding: 10px; /* ปรับ padding สำหรับหน้าจอขนาดเล็ก */
     }
 
     .Head {
-        font-size: 28px; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
-        padding-left: 0; /* ปรับ padding สำหรับหน้าจอขนาดเล็ก */
-        text-align: center;
+        font-size: 1rem; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
+        align-items: end;
     }
 
     .textarea {
-        font-size: 14px; 
+        font-size: 0.6rem; 
         line-height: 22px;
+        width: 100%;
     }
 
     .lasttext {
@@ -98,5 +97,20 @@ margin-left: 10%;
         text-align:end; 
         
     }
+    .downloadicon{
+        font-size: 0.8rem;
+    }
+    .downloadbutton{
+        width: 32px;
+        height: 32px;
+    }
+    .border {
+        width: 100%;
+        height: 100%;
+    }
+    .contentarea{
+        width: 85%;
+    }
+    
 
 }

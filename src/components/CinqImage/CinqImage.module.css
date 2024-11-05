@@ -13,11 +13,10 @@
     .container {
         padding: 10px; 
         display: flex;
-        justify-content: center;
-        margin-top: 10%;
+        align-items: start;
     }
 
     .image {
-        max-width: 50%; 
+        max-width: 100%; 
     }
 }

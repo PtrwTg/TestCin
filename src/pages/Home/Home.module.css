@@ -102,17 +102,17 @@
 
 @media (max-width: 768px) {
     .containerabout {
-        flex-direction: column; /* เปลี่ยนการจัดเรียงเป็นแนวตั้ง */
-        height: auto; /* ปรับความสูงอัตโนมัติ */
+        flex-direction: row; 
+        height: 70vh;
     }
 
     .left, .right {
-        max-width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
+        max-width: 100%; 
     }
 
     .top, .bottom {
-        flex: none; /* ปรับ flex ให้ไม่มีผล */
-        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
+        flex: none;
+        width: 100%; 
     }
     .box{
         height: 2rem;
@@ -126,4 +126,12 @@
         width: 75%;
         height: 80%;
     }
+    .left {
+        max-width: 35%;
+    }
+    .top {
+        justify-content: start;
+    }
+    
+    
 }

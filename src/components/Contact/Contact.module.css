@@ -29,8 +29,8 @@
     .buttonarea {
         width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
         gap: 10%; /* ปรับช่องว่างระหว่างปุ่ม */
-        margin-top: 20%; /* ปรับ margin-top */
-        height: 20vh;
+        height: 200%;
+        
     }
 
     .buttoncontact {
