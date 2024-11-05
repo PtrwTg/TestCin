@@ -28,7 +28,7 @@ flex-direction: column;
 }
 .textarea {
 font-family: 'Inter', sans-serif;
-font-size: 20px;
+font-size: 1.5rem;
 font-weight: 400;
 line-height: 24.2px;
 text-align: center;
@@ -40,7 +40,7 @@ width: 100%;
 }
 .lasttext {
 font-family: "inter", sans-serif;
-font-size: 20px;
+font-size: 1.5rem;
 font-weight: 400;
 line-height: 24.2px;
 text-align: right;
