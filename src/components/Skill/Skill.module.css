@@ -24,21 +24,71 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, background-image 0.3s ease-out;
 }
 
 .icon:hover {
   transform: scale(1.1);
 }
 
+/* ไอคอนปกติ */
+.figma {
+  background-image: url('./figma.svg');
+}
+
+.group42 {
+  background-image: url('./Group42.svg');
+}
+
+.group36 {
+  background-image: url('./Group36.svg');
+}
+
+.procreate {
+  background-image: url('./procreate.svg');
+}
+
+.group37 {
+  background-image: url('./Group37.svg');
+}
+
+.unity {
+  background-image: url('./unity.svg');
+}
+
+/* ไอคอนเมื่อ Hover */
+.figma:hover {
+  background-image: url('./figma_ani.svg');
+}
+
+.group42:hover {
+  background-image: url('./Group42_ani.svg');
+}
+
+.group36:hover {
+  background-image: url('./Group36_ani.svg');
+}
+
+.procreate:hover {
+  background-image: url('./procreate_ani.svg');
+}
+
+.group37:hover {
+  background-image: url('./Group37_ani.svg');
+}
+
+.unity:hover {
+  background-image: url('./unity_ani.svg');
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
   .title {
-      text-align: center;
+    text-align: center;
   }
   .icon {
-      width: 15%;
-      height: 80px;
-      margin-left: 3%;
+    width: 15%;
+    height: 80px;
+    margin-left: 3%;
   }
 }
