@@ -1,4 +1,5 @@
-import React from 'react';
+// src/pages/Home/Home.jsx
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header.jsx';
 import ImageComponent from '../../components/ImageComponent/ImageComponent.jsx';
 import styles from './Home.module.css';
@@ -11,38 +12,112 @@ import Hardskill from '../../components/Hardskill/Hardskill.jsx';
 import Softskill from '../../components/Softskill/Softskill.jsx';
 import Myproject from '../../components/Myproject/Myproject.jsx';
 import Aboutme from '../../components/Aboutme/Aboutme.jsx';
+import Preloader from '../../components/Preloader/Preloader.jsx';
+
+// นำเข้าภาพทั้งหมดที่ต้องการ preload
+import figma from '../../components/Skill/figma.svg';
+import figma_ani from '../../components/Skill/figma_ani.svg';
+import group42 from '../../components/Skill/Group42.svg';
+import group42_ani from '../../components/Skill/Group42_ani.svg';
+import group36 from '../../components/Skill/Group36.svg';
+import group36_ani from '../../components/Skill/Group36_ani.svg';
+import procreate from '../../components/Skill/procreate.svg';
+import procreate_ani from '../../components/Skill/procreate_ani.svg';
+import group37 from '../../components/Skill/Group37.svg';
+import group37_ani from '../../components/Skill/Group37_ani.svg';
+import unity from '../../components/Skill/unity.svg';
+import unity_ani from '../../components/Skill/unity_ani.svg';
+
+// ภาพจาก Myproject
+import column1_1 from '../../components/Myproject/column1_1.svg';
+import column1_1_ani from '../../components/Myproject/column1_1_ani.svg';
+import column1_2 from '../../components/Myproject/column1_2.svg';
+import column1_2_ani from '../../components/Myproject/column1_2_ani.svg';
+// นำเข้าภาพอื่น ๆ ใน Myproject ตามที่ต้องการ
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const images = [
+      figma,
+      figma_ani,
+      group42,
+      group42_ani,
+      group36,
+      group36_ani,
+      procreate,
+      procreate_ani,
+      group37,
+      group37_ani,
+      unity,
+      unity_ani,
+      column1_1,
+      column1_1_ani,
+      column1_2,
+      column1_2_ani,
+      // เพิ่มเส้นทางภาพอื่น ๆ ที่ต้องการ preload
+    ];
+
+    const preloadImages = (imageArray) => {
+      return Promise.all(
+        imageArray.map((src) => {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = resolve;
+            img.onerror = reject;
+          });
+        })
+      );
+    };
+
+    preloadImages(images)
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error loading images', err);
+        setIsLoading(false); // แม้จะมีบางภาพโหลดไม่สำเร็จ ก็ยังคงเปลี่ยนสเตตให้เป็นไม่โหลดแล้ว
+      });
+  }, []);
+
   return (
-    <div className={styles.container}>
-      <Header />
-      <ImageComponent />
-      <Aboutme />
-      <div className={styles.box}></div>
-      <div className={styles.containerdetail}>
-        <div className={styles.detailleft}>
-          <div className={styles.softwareskill}>
-            <div className={styles.softwarearea}>
-            <Skill />
+    <>
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <div className={styles.container}>
+          <Header />
+          <ImageComponent />
+          <Aboutme />
+          <div className={styles.box}></div>
+          <div className={styles.containerdetail}>
+            <div className={styles.detailleft}>
+              <div className={styles.softwareskill}>
+                <div className={styles.softwarearea}>
+                  <Skill />
+                </div>
+              </div>
+              <div className={styles.exp}>
+                <div className={styles.Exparea}>
+                  <Exp />
+                </div>
+              </div>
+            </div>
+            <div className={styles.detailright}>
+              <div className={styles.hardskill}>
+                <Hardskill />
+              </div>
+              <div className={styles.softskills}>
+                <Softskill />
+              </div>
             </div>
           </div>
-          <div className={styles.exp}>
-            <div className={styles.Exparea}>
-            <Exp />
-            </div>
-          </div>
+          <Myproject />
         </div>
-        <div className={styles.detailright}>
-          <div className={styles.hardskill}>
-            <Hardskill />
-          </div>
-          <div className={styles.softskills}>
-            <Softskill />
-          </div>
-        </div>
-      </div>
-      < Myproject />
-    </div>
+      )}
+    </>
   );
 };
 
