@@ -33,7 +33,20 @@ import column1_1 from '../../components/Myproject/column1_1.svg';
 import column1_1_ani from '../../components/Myproject/column1_1_ani.svg';
 import column1_2 from '../../components/Myproject/column1_2.svg';
 import column1_2_ani from '../../components/Myproject/column1_2_ani.svg';
-// นำเข้าภาพอื่น ๆ ใน Myproject ตามที่ต้องการ
+import column2_1 from '../../components/Myproject/column2_1.svg';
+import column2_1_ani from '../../components/Myproject/column2_1_ani.svg';
+import column2_2 from '../../components/Myproject/column2_2.svg';
+import column2_2_ani from '../../components/Myproject/column2_2_ani.svg';
+import column2_3 from '../../components/Myproject/column2_3.svg';
+import column2_3_ani from '../../components/Myproject/column2_3_ani.svg';
+import column3_1 from '../../components/Myproject/column3_1.svg';
+import column3_1_ani from '../../components/Myproject/column3_1_ani.svg';
+import column3_2 from '../../components/Myproject/column3_2.svg';
+import column3_2_ani from '../../components/Myproject/column3_2_ani.svg';
+import column3_3 from '../../components/Myproject/column3_3.svg';
+import column3_3_ani from '../../components/Myproject/column3_3_ani.svg';
+
+
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,7 +69,18 @@ const Home = () => {
       column1_1_ani,
       column1_2,
       column1_2_ani,
-      // เพิ่มเส้นทางภาพอื่น ๆ ที่ต้องการ preload
+      column2_1,
+      column2_1_ani,
+      column2_2,
+      column2_2_ani,
+      column2_3,
+      column2_3_ani,
+      column3_1,
+      column3_1_ani,
+      column3_2,
+      column3_2_ani,
+      column3_3,
+      column3_3_ani,
     ];
 
     const preloadImages = (imageArray) => {
