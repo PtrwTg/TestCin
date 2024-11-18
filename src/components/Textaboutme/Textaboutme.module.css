@@ -1,116 +1,111 @@
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-.contentarea{
-    width: 80%;
-    height: 70%;
-}
-.Head{
-font-family: "inter", sans-serif;
-font-size: 36px;
-font-weight: 600;
-line-height: 43.57px;
-color: #8BB0DB;
-margin-left: 5%;
-}
-
-.border {
-border: 2px solid #8BB0DB;
-border-radius: 30px;
-width: 100%;
-height: 80%;
-display: flex;
-flex-direction: column;
-}
-.textarea {
-font-family: 'Inter', sans-serif;
-font-size: 1.5rem;
-font-weight: 400;
-line-height: 24.2px;
-text-align: center;
-height: 75%;
-width: 100%;
-}
-.text {
-    margin-top: 5%;
-}
-.lasttext {
-font-family: "inter", sans-serif;
-font-size: 1.5rem;
-font-weight: 400;
-line-height: 24.2px;
-text-align: right;
-max-width: 80%;
-margin-left: 10%;
-}
-
-.downloadbutton {
-    background-color: #8BB0DB;
-    color: white;
-    border-radius: 50%;
-    width: 86px;
-    height: 86px;
-    font-size: 1.5rem;
-    border: 2px solid #8BB0DB;
-    transition: color 300ms ease-out, background-color 300ms ease-out; /* เพิ่ม transition */
-}
-
-.downloadbutton:hover {
-    color: #8BB0DB; /* เปลี่ยนสีตัวอักษรเป็นสีฟ้า */
-    background-color: white; /* เปลี่ยนพื้นหลังเป็นสีขาว */
-}
-.downloadicon{
-    font-size: 3rem;
-}
-.downloadbottondiv{
-    display: flex;
-    justify-content: end;
-    align-items: end;
-    margin-bottom: -6%;
-    margin-right: -5%;
-}
-
-/* Media Queries สำหรับหน้าจอขนาดเล็ก */
-@media (max-width: 768px) {
     .container {
-        width: 100%; /* ปรับความกว้างให้เต็มหน้าจอ */
-    }
-
-    .Head {
-        font-size: 1rem; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
-        align-items: end;
-    }
-
-    .textarea {
-        font-size: 0.6rem; 
-        line-height: 22px;
-        width: 100%;
-    }
-
-    .lasttext {
-        font-size: 12px; 
-        line-height: 22px; 
-        text-align:end; 
-        
-    }
-    .downloadicon{
-        font-size: 0.8rem;
-    }
-    .downloadbutton{
-        width: 32px;
-        height: 32px;
-    }
-    .border {
         width: 100%;
         height: 100%;
+        display: flex   ;
+        justify-content: center;
+
     }
     .contentarea{
-        width: 85%;
+        width: 80%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
     }
-    
+    .Head{
+        font-size: 2rem;
+        font-family: 'inter', sans-serif;
+        color: #8BB0DB;
+        
+    }
+    .border {
+        height: 80%;
+        border: #8BB0DB 2px solid;
+        border-radius: 30px;
+        width: 100%;
+    }
+    .textarea {
+        font-size: 1.5rem;
+        font-family: 'inter', sans-serif;
+        line-height: 200%;
+    }
+    .text {
+        text-align: center;
+        height: 40%;
+    }
+    .lasttext {
+        text-align: end;
+        margin-right: 5%;
+        height: 40%;
+        
+    }
+    .downloadbottondiv{
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        height: 30%;
 
-}
+    }
+    .downloadbutton {
+        background-color: #8BB0DB;
+        color: white;
+        border-radius: 50%;
+        width: 86px;
+        height: 86px;
+        font-size: 1.5rem;
+        border: 2px solid #8BB0DB;
+        transition: color 300ms ease-out, background-color 300ms ease-out; 
+    }
+
+    .downloadbutton:hover {
+        color: #8BB0DB; 
+        background-color: white; 
+    }
+    .downloadicon{
+        font-size: 3rem;
+    }
+
+
+
+    @media (max-width: 768px) {
+        .container {
+            width: 100%; 
+        }
+
+        .Head {
+            font-size: 1rem; 
+            align-items: end;
+        }
+
+        .textarea {
+            font-size: 0.6rem; 
+            line-height: 22px;
+            width: 100%;
+        }
+
+        .lasttext {
+            font-size: 12px; 
+            line-height: 22px; 
+            text-align:end; 
+            
+        }
+        .downloadicon{
+            font-size: 0.8rem;
+        }
+        .downloadbutton{
+            width: 32px;
+            height: 32px;
+        }
+        .border {
+            width: 100%;
+            height: 100%;
+        }
+        .contentarea{
+            width: 85%;
+        }
+        .text br {
+            display: none; 
+        }
+
+    }

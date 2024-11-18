@@ -1,0 +1,161 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.top, .bottom {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top {
+    flex-direction: column;
+}
+
+.head {
+    font-family: 'inter', sans-serif;
+    width: 65%;
+    color: #8BB0DB;
+}
+
+.border {
+    border-radius: 30px;
+    border: 1.5px solid #8BB0DB;
+    width: 75%;
+    height: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+}
+.textarea{
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    width: 70%;
+    font-family: 'inter', sans-serif;
+}
+.p {
+    text-align: center;
+}
+.last {
+    text-align: end;
+}
+
+.button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    background-color: #8BB0DB;
+    border: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transform: translate(50%, 50%);
+    font-size: 24px;
+    border: 1.5px solid #8BB0DB;
+    transition: color 0.3s ease, background-color 0.3s ease; 
+}
+
+.icon {
+    font-size: 2rem; 
+  }
+.button:hover {
+    color: #8BB0DB; 
+    background-color: white; 
+  }
+  .contactbottonarea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+    width: 75%;
+  }
+  
+  .contactButton {
+    border: 1px solid #8BB0DB;
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+    color: #8BB0DB;
+    border-radius: 30px;
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+    font-size: 2.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease; /* เพิ่มการ transition */
+}
+
+.contactButton:hover {
+    background-color: #8BB0DB;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left, .right {
+        width: 100%;
+        max-width: 100%;
+        
+    }
+
+    .top, .bottom {
+        width: 100%;
+        height: auto;
+    }
+    .bottom{
+        margin-top: 10%;
+    }
+
+    .image {
+        width: 50%;
+    }
+    .border {
+        height: 20vh;
+    }
+
+    .button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transform: translate(50%, 50%);
+    }
+    .textarea{
+        width: 90%;
+    }
+    .right{
+        margin-top: 10%;
+    }
+    .contactbottonarea{
+        height: 12vh;
+    }
+}

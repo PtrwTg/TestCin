@@ -1,10 +1,9 @@
 .container {
   display: flex;
-  justify-content: flex-end; /* จัดเรียงปุ่มไปทางขวา */
+  justify-content: end;
   align-items: center;
   gap: 3%; 
   padding: 20px;
-  flex-wrap: wrap;
   height: 10vh;
 }
 
@@ -33,14 +32,16 @@
 
 /* Media Queries สำหรับหน้าจอขนาดเล็ก */
 @media (max-width: 768px) {
+
   .container {
-    justify-content: center; /* จัดเรียงปุ่มให้อยู่ตรงกลางสำหรับหน้าจอขนาดเล็ก */
+    justify-content: flex-end; /* จัดให้เนื้อหาอยู่ชิดขวา */
+    gap: 10px; /* ปรับระยะห่างระหว่างปุ่มให้เหมาะสม */
   }
 
   .aboutMe, .myWork {
-    font-size: 1rem; /* ปรับขนาดฟอนต์สำหรับหน้าจอขนาดเล็ก */
-    padding: 4px 20px; /* ปรับ padding สำหรับหน้าจอขนาดเล็ก */
-    width: 100%; /* ปรับขนาดปุ่มให้เต็มความกว้างของหน้าจอ */
-    margin: 5px 0; /* เพิ่ม margin ระหว่างปุ่ม */
+    font-size: 1rem;
+    width: auto; /* ให้ปุ่มกำหนดความกว้างตามเนื้อหา */
+    margin: 0; /* ลบ Margin ที่อาจทำให้ปุ่มย้ายบรรทัด */
+    padding: 6px 20px; /* ปรับ Padding ให้เหมาะสม */
   }
 }

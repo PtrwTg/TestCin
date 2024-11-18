@@ -10,25 +10,14 @@ import Exp from '../../components/Exp/Exp.jsx';
 import Hardskill from '../../components/Hardskill/Hardskill.jsx';
 import Softskill from '../../components/Softskill/Softskill.jsx';
 import Myproject from '../../components/Myproject/Myproject.jsx';
+import Aboutme from '../../components/Aboutme/Aboutme.jsx';
 
 const Home = () => {
   return (
     <div className={styles.container}>
       <Header />
       <ImageComponent />
-      <div className={styles.containerabout}>
-        <div className={styles.left}>
-          <CinqImage />
-        </div>
-        <div className={styles.right}>
-          <div className={styles.top}>
-          <Textaboutme />
-          </div>
-          <div className={styles.bottom}>
-          <Contact />
-          </div>
-        </div>
-      </div>
+      <Aboutme />
       <div className={styles.box}></div>
       <div className={styles.containerdetail}>
         <div className={styles.detailleft}>
