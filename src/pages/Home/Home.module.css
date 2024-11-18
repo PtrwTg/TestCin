@@ -109,6 +109,7 @@
     }
 
     .containerdetail {
+        margin-top: 10%;
         flex-direction: column;
         height: auto;
     }
