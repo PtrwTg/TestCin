@@ -19,6 +19,7 @@ import skillunity from './unity.svg';
 
 function Project1() {
   const [activeButton, setActiveButton] = useState('Unicourse Landing Page');
+  const [isFading, setIsFading] = useState(false);
 
   const projects = {
     'Unicourse Landing Page': {
@@ -82,16 +83,20 @@ function Project1() {
   const currentProject = projects[activeButton] || projects['Unicourse Landing Page'];
 
   const handleButtonClick = (btn) => {
-    setActiveButton(btn);
+    setIsFading(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      setActiveButton(btn);
+      setIsFading(false);
+    }, 500); // Duration should match the CSS transition duration
   };
 
   return (
     <div className={styles.container}>
       <Header />
       <div className={styles.contentarea}>
-        <h1 className={styles.projectname}>{currentProject.projectname}</h1>
-        <div className={styles.hashtag}>
+        <h1 className={`${styles.projectname} ${isFading ? styles.fade : ''}`}>{currentProject.projectname}</h1>
+        <div className={`${styles.hashtag} ${isFading ? styles.fade : ''}`}>
           {currentProject.hashtags.map((tag, index) => (
             <h6 key={index}>{tag}</h6>
           ))}
@@ -130,9 +135,9 @@ function Project1() {
           </div>
           <div className={styles.right}>
             <div className={styles.top}>
-              <img className={styles.img} src={currentProject.img} alt={currentProject.projectname} />
+              <img className={`${styles.img} ${isFading ? styles.fade : ''}`} src={currentProject.img} alt={currentProject.projectname} />
             </div>
-            <div className={styles.bottom}>
+            <div className={`${styles.bottom} ${isFading ? styles.fade : ''}`}>
               <div className={styles.outcome}>
                 <h1 className={styles.head}>Out Come</h1>
                 <p className={styles.text}>{currentProject.text}</p>
