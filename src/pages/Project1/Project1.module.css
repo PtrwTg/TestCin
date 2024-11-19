@@ -336,7 +336,7 @@
   }
 
   .text {
-    width: 100%;
+    width: 90%;
     margin-left: 5%;
     font-size: 0.8rem;
   }
@@ -380,6 +380,7 @@
   .icon {
     margin-left: 5%;
     gap: 1rem;
+    margin-top: 3%;
   }
 
   .icon img {
