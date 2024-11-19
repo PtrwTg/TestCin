@@ -81,6 +81,11 @@ function Project1() {
 
   const currentProject = projects[activeButton] || projects['Unicourse Landing Page'];
 
+  const handleButtonClick = (btn) => {
+    setActiveButton(btn);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className={styles.container}>
       <Header />
@@ -115,7 +120,7 @@ function Project1() {
                   <button
                     key={btn}
                     className={`${styles.button} ${activeButton === btn ? styles.active : ''}`}
-                    onClick={() => setActiveButton(btn)}
+                    onClick={() => handleButtonClick(btn)}
                   >
                     {btn}
                   </button>
