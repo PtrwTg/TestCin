@@ -3,32 +3,93 @@ import React, { useState } from 'react';
 import Header from '../../components/Homebar/Homebar';
 import styles from './Project1.module.css';
 import Project1img from './column1_1.svg';
+import Project2img from './column1_2.svg';
+import Project3img from './column2_1.svg';
+import Project4img from './column2_2.svg';
+import Project5img from './column2_3.svg';
+import Project6img from './column3_1.svg';
+import Project7img from './column3_2.svg';
+import Project8img from './column3_3.svg';
 import skillfigma from './figma.svg';
 import skillps from './Group37.svg';
-import skillvector from './Group36.svg';
+import skillmiro from './Group36.svg';
+import skillwix from './Group42.svg';
+import skillprocreate from './procreate.svg';
+import skillunity from './unity.svg';
 
 function Project1() {
   const [activeButton, setActiveButton] = useState('Unicourse Landing Page');
 
-  const buttons = [
-    'Unicourse Landing Page',
-    'MasterKids (In-House)',
-    'My Old Portfolio Website',
-    'Living House',
-    '2 Hand',
-    'Journal Mood',
-    'Pocket',
-    'Wonder',
-  ];
+  const projects = {
+    'Unicourse Landing Page': {
+      projectname: 'Unicourse Landing Page',
+      hashtags: ['#Landing Page', '#UX/UI Design'],
+      img: Project1img,
+      text: 'In this Unicourse Landing Page project, I am responsible for the complete design, except for some graphic elements. In this project, we created a modern, futuristic landing page with neon tones. This design will attract attention with a futuristic theme while inspiring confidence in learning AI.',
+      tools: [skillfigma, skillps, skillmiro],
+    },
+    'MasterKids (In-House)': {
+      projectname: 'MasterKids (In-House)',
+      hashtags: ['#In-House-Page', '#UX/UI Design', '#WIX'],
+      img: Project2img,
+      text: 'Design the In-house page of MasterKids Thailand in a formal tone by using MasterKids color scheme, adjusted to appear calm and professional, while organizing elements in an orderly fashion to reflect the commitment to developing childrens skills and potential.',
+      tools: [skillwix],
+    },
+    'My Old Portfolio Website': {
+      projectname: 'My Old Portfolio Website',
+      hashtags: ['#Portfolio Website', '#UX/UI Design '],
+      img: Project3img,
+      text: 'The outcome of my designed ( old ) portfolio website featuring a light background and improved a user-friendly and visually appealing platform accessible across all devices, enhancing engagement, and effectively showcasing my work to a broader audience.',
+      tools: [skillfigma, skillps, skillmiro],
+    },
+    'Living House': {
+      projectname: 'Living House',
+      hashtags: ['#Web Design', '#UX/UI Design ','#Portfolio Project'],
+      img: Project4img,
+      text: 'This is a website project I designed for my portfolio, where I intentionally created a user-friendly experience with a visually appealing UI. The well-organized information and intuitive navigation enhance clarity, while effective assembly visualization empowers users to make informed decisions confidently, ultimately improving their overall satisfaction with the online shopping experience.',
+      tools: [skillfigma, skillps, skillmiro],
+    },
+    '2 Hand': {
+      projectname: '2 Hand',
+      hashtags: ['#Application Design', '#UX/UI Design ','#Portfolio Project'],
+      img: Project5img,
+      text: 'This is a website project I designed for my portfolio. The site is dedicated to selling vinyl records directly from retailers, where I intentionally addressed the pain points of complex navigation and poorly organized information. This approach resulted in a streamlined user experience, improved accessibility for all users, and enhanced clarity in finding and accessing relevant information, ultimately leading to increased user engagement and satisfaction.',
+      tools: [skillfigma, skillmiro],
+    },
+    'Journal Mood': {
+      projectname: 'Journal Mood',
+      hashtags: ['#App Design', '#User Experience'],
+      img: Project6img,
+      text: 'This is a mobile project I designed for my portfolio. JournalMood is your personal companion for reflection and emotional well-being. I took the pain points of other diary applications and improved them, ultimately leading to the solution of JournalMood. We aimed to create a diary app that felt like a trusted friend—light-hearted yet safe. To achieve this, I selected soothing colors that provide a comfortable experience, avoiding any heavy or oppressive feelings during use.',
+      tools: [skillfigma, skillmiro],
+    },
+    'Pocket': {
+      projectname: 'Pocket',
+      hashtags: ['#Application Design', '#UX/UI Design ','#Portfolio Project'],
+      img: Project7img,
+      text: 'This is a mobile project I designed for my portfolio. Pocket represents a new generation of mobile banking, addressing common pain points found in some other banking apps. Its innovative solutions lead to an enhanced user experience, increased engagement, and empowered financial decision-making for users. Pocket offers a modern, intuitive design with robust features, user-centric customization, and goal-setting capabilities.',
+      tools: [skillfigma, skillmiro],
+    },
+    'Wonder': {
+      projectname: 'Wonder',
+      hashtags: ['#Application Design', '#UX/UI Design ','#Portfolio Project'],
+      img: Project8img,
+      text: 'This is my first mobile project designed for my portfolio. Wonder is an inclusive app created for members of the queer community who seek to forge genuine connections and meaningful friendships. We aimed to design a friendship app that focuses on interaction and conversation rather than dating. As this was my first project in the UX/UI design field, it contains some mistakes; however, I want to keep it in my portfolio to showcase my growth and development in this area.',
+      tools: [skillfigma, skillmiro],
+    },
+  };
+
+  const currentProject = projects[activeButton] || projects['Unicourse Landing Page'];
 
   return (
     <div className={styles.container}>
       <Header />
       <div className={styles.contentarea}>
-        <h1 className={styles.projectname}>{activeButton}</h1>
+        <h1 className={styles.projectname}>{currentProject.projectname}</h1>
         <div className={styles.hashtag}>
-          <h6>#Landing Page</h6>
-          <h6>#UX/UI Design</h6>
+          {currentProject.hashtags.map((tag, index) => (
+            <h6 key={index}>{tag}</h6>
+          ))}
         </div>
         <div className={styles.content}>
           <div className={styles.left}>
@@ -50,7 +111,7 @@ function Project1() {
                 </div>
               </div>
               <div className={styles.menu}>
-                {buttons.map((btn) => (
+                {Object.keys(projects).map((btn) => (
                   <button
                     key={btn}
                     className={`${styles.button} ${activeButton === btn ? styles.active : ''}`}
@@ -64,21 +125,19 @@ function Project1() {
           </div>
           <div className={styles.right}>
             <div className={styles.top}>
-              <img className={styles.img} src={Project1img} alt="Project1img" />
+              <img className={styles.img} src={currentProject.img} alt={currentProject.projectname} />
             </div>
             <div className={styles.bottom}>
               <div className={styles.outcome}>
                 <h1 className={styles.head}>Out Come</h1>
-                <p className={styles.text}>
-                  In this {activeButton} project, I am responsible for the complete design, except for some graphic elements. In this project, we created a modern, futuristic landing page with neon tones. This design will attract attention with a futuristic theme while inspiring confidence in learning AI.
-                </p>
+                <p className={styles.text}>{currentProject.text}</p>
               </div>
               <div className={styles.tools}>
                 <h1 className={styles.head}>Tools</h1>
                 <div className={styles.icon}>
-                  <img src={skillfigma} alt="Figma" />
-                  <img src={skillps} alt="Photoshop" />
-                  <img src={skillvector} alt="Vector" />
+                  {currentProject.tools.map((tool, index) => (
+                    <img key={index} src={tool} alt={`tool-${index}`} />
+                  ))}
                 </div>
               </div>
             </div>
