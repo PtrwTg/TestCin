@@ -179,14 +179,21 @@ function Project1() {
                 <h1 className={styles.head}>Tools</h1>
                 <div className={styles.icon}>
                   {currentProject.tools.map((tool, index) => (
-                    <img
+                    <div
                       key={index}
-                      src={hoveredTool === index ? tool.hover : tool.normal}
-                      alt={tool.alt}
+                      className={styles.toolWrapper}
                       onMouseEnter={() => setHoveredTool(index)}
                       onMouseLeave={() => setHoveredTool(null)}
-                      className={styles.skillIcon}
-                    />
+                    >
+                      <img
+                        src={hoveredTool === index ? tool.hover : tool.normal}
+                        alt={tool.alt}
+                        className={styles.skillIcon}
+                      />
+                      {hoveredTool === index && (
+                        <span className={styles.tooltip}>{tool.alt}</span>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
