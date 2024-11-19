@@ -17,8 +17,9 @@
   font-family: 'Inter', sans-serif;
   color: #8BB0DB;
   font-size: 5rem;
-  text-align: center;
+  text-align: start;
   margin-bottom: 1rem;
+  margin-left: 10%;
 }
 
 .hashtag {
@@ -27,9 +28,10 @@
   display: flex;
   flex-direction: row;
   gap: 1rem; /* ปรับช่องว่างระหว่างแท็ก */
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap; /* รองรับจำนวนแท็กที่เปลี่ยนแปลง */
   margin-bottom: 2rem;
+  margin-left: 10%;
 }
 
 .hashtag h6 {
@@ -109,7 +111,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 1rem;
+  row-gap: 5rem;
   margin-top: 15%;
 }
 
@@ -133,14 +135,14 @@
   background-color: #8BB0DB;
   color: #ffffff;
   border-radius: 30px;
-  padding: 14px 22px; /* เพิ่มขนาดเมื่อ hover */
+  padding: 12px 18px; 
 }
 
 .button.active {
   background-color: #8BB0DB;
   color: #ffffff;
   border-radius: 30px;
-  padding: 14px 22px; /* เพิ่มขนาดเมื่อ active */
+  padding: 12px 18px; 
 }
 
 .right {
@@ -154,15 +156,15 @@
   flex-direction: row;
   align-items: flex-start;
   margin-left: 5%;
-  height: 40%;
+  height: 50%;
 }
 
 .img {
-  width: 75%;
+  width: 90%;
 }
 
 .bottom {
-  height: 60%;
+  height: 50%;
   display: flex;
   flex-direction: column;
 }
@@ -179,7 +181,6 @@
   text-align: start;
   margin-left: 5%;
   margin-top: 5%;
-  color: #8BB0DB;
 }
 
 .text {
@@ -203,10 +204,10 @@
   margin-top: 1rem;
   margin-left: 5%;
   gap: 2rem;
-  flex-wrap: wrap; /* รองรับจำนวนไอคอนที่เปลี่ยนแปลง */
+  flex-wrap: wrap; 
 }
 
 .icon img {
-  width: 50px;
-  height: 50px;
+  width: 5rem;
+  height: 5rem;
 }
