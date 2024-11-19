@@ -115,13 +115,18 @@ function Project1() {
   const currentProject = projects[activeButton] || projects['Unicourse Landing Page'];
 
   useEffect(() => {
+    // เมื่อคอมโพเนนต์ Project1 ถูก mount หรือเปลี่ยนแปลง เป็นการเลื่อนหน้าจอไปที่ด้านบน
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
     if (location.state?.project && location.state.project !== activeButton) {
       setIsFading(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setTimeout(() => {
         setActiveButton(location.state.project);
         setIsFading(false);
-      }, 500);
+      }, 500); // ระยะเวลาควรตรงกับ duration ใน CSS transition
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.state?.project]);
