@@ -1,5 +1,6 @@
 // src/pages/Project1/Project1.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../../components/Homebar/Homebar';
 import styles from './Project1.module.css';
 import Project1img from './column1_1.svg';
@@ -20,9 +21,11 @@ import skillmirohover from './Group36_ani.svg';
 import skillwixhover from './Group42_ani.svg';
 
 function Project1() {
-  const [activeButton, setActiveButton] = useState('Unicourse Landing Page');
+  const location = useLocation();
+  const initialProject = location.state?.project || 'Unicourse Landing Page';
+  const [activeButton, setActiveButton] = useState(initialProject);
   const [isFading, setIsFading] = useState(false);
-  const [hoveredTool, setHoveredTool] = useState(null); // สถานะของเครื่องมือที่ถูกโฮเวอร์
+  const [hoveredTool, setHoveredTool] = useState(null);
 
   const projects = {
     'Unicourse Landing Page': {
@@ -58,7 +61,7 @@ function Project1() {
     },
     'Living House': {
       projectname: 'Living House',
-      hashtags: ['#Web Design', '#UX/UI Design ','#Portfolio Project'],
+      hashtags: ['#Web Design', '#UX/UI Design', '#Portfolio Project'],
       img: Project4img,
       text: 'This is a website project I designed for my portfolio, where I intentionally created a user-friendly experience with a visually appealing UI. The well-organized information and intuitive navigation enhance clarity, while effective assembly visualization empowers users to make informed decisions confidently, ultimately improving their overall satisfaction with the online shopping experience.',
       tools: [
@@ -69,7 +72,7 @@ function Project1() {
     },
     '2 Hand': {
       projectname: '2 Hand',
-      hashtags: ['#Application Design', '#UX/UI Design ','#Portfolio Project'],
+      hashtags: ['#Application Design', '#UX/UI Design', '#Portfolio Project'],
       img: Project5img,
       text: 'This is a website project I designed for my portfolio. The site is dedicated to selling vinyl records directly from retailers, where I intentionally addressed the pain points of complex navigation and poorly organized information. This approach resulted in a streamlined user experience, improved accessibility for all users, and enhanced clarity in finding and accessing relevant information, ultimately leading to increased user engagement and satisfaction.',
       tools: [
@@ -89,7 +92,7 @@ function Project1() {
     },
     'Pocket': {
       projectname: 'Pocket',
-      hashtags: ['#Application Design', '#UX/UI Design ','#Portfolio Project'],
+      hashtags: ['#Application Design', '#UX/UI Design', '#Portfolio Project'],
       img: Project7img,
       text: 'This is a mobile project I designed for my portfolio. Pocket represents a new generation of mobile banking, addressing common pain points found in some other banking apps. Its innovative solutions lead to an enhanced user experience, increased engagement, and empowered financial decision-making for users. Pocket offers a modern, intuitive design with robust features, user-centric customization, and goal-setting capabilities.',
       tools: [
@@ -99,7 +102,7 @@ function Project1() {
     },
     'Wonder': {
       projectname: 'Wonder',
-      hashtags: ['#Application Design', '#UX/UI Design ','#Portfolio Project'],
+      hashtags: ['#Application Design', '#UX/UI Design', '#Portfolio Project'],
       img: Project8img,
       text: 'This is my first mobile project designed for my portfolio. Wonder is an inclusive app created for members of the queer community who seek to forge genuine connections and meaningful friendships. We aimed to design a friendship app that focuses on interaction and conversation rather than dating. As this was my first project in the UX/UI design field, it contains some mistakes; however, I want to keep it in my portfolio to showcase my growth and development in this area.',
       tools: [
@@ -111,20 +114,35 @@ function Project1() {
 
   const currentProject = projects[activeButton] || projects['Unicourse Landing Page'];
 
+  useEffect(() => {
+    if (location.state?.project && location.state.project !== activeButton) {
+      setIsFading(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        setActiveButton(location.state.project);
+        setIsFading(false);
+      }, 500);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.state?.project]);
+
   const handleButtonClick = (btn) => {
+    if (btn === activeButton) return;
     setIsFading(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
       setActiveButton(btn);
       setIsFading(false);
-    }, 500); // ระยะเวลาควรตรงกับ duration ใน CSS transition
+    }, 500); // Duration should match the CSS transition duration
   };
 
   return (
     <div className={styles.container}>
       <Header />
       <div className={styles.contentarea}>
-        <h1 className={`${styles.projectname} ${isFading ? styles.fade : ''}`}>{currentProject.projectname}</h1>
+        <h1 className={`${styles.projectname} ${isFading ? styles.fade : ''}`}>
+          {currentProject.projectname}
+        </h1>
         <div className={`${styles.hashtag} ${isFading ? styles.fade : ''}`}>
           {currentProject.hashtags.map((tag, index) => (
             <h6 key={index}>{tag}</h6>
@@ -137,14 +155,14 @@ function Project1() {
               <div className={styles.contact}>
                 <div className={styles.email}>
                   <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 24 24" width="24px" fill="#8BB0DB">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                   </svg>
                   <p>phurichaya.7502@gmail.com</p>
                 </div>
                 <div className={styles.tel}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="#8BB0DB">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24c1.12.37 2.33.57 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1c-9.39 0-17-7.61-17-17c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1c0 1.25.2 2.45.57 3.57c.11.35.03.74-.25 1.02z"/>
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24c1.12.37 2.33.57 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1c-9.39 0-17-7.61-17-17c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1c0 1.25.2 2.45.57 3.57c.11.35.03.74-.25 1.02z" />
                   </svg>
                   <p>099-365-6596</p>
                 </div>
