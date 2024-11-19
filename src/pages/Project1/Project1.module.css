@@ -348,6 +348,7 @@
 
   .left {
     width: 30%; 
+    justify-content: center;
   }
   .right{
     width: 70%; 
@@ -372,7 +373,7 @@
     margin-top: 8%;
   }
   .head {
-    margin-left: 2%;
+    margin-left: 5%;
     margin-top: 1px;
   }
 
@@ -399,6 +400,11 @@
   .email p , .tel p{
     font-size:0.44rem
   }
+  .email , .tel{
+    justify-content: start;
+    margin-left: -20%;
+  }
+
 
   .menu button {
     font-size: 0.5rem;
