@@ -1,7 +1,7 @@
 /* Project1.module.css */
 
 .contentarea {
-  height: 200vh;
+  height: 180vh;
   display: flex;
   flex-direction: column;
 }
@@ -96,7 +96,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 7.5rem; /* ปรับค่าตามต้องการ เช่น 1rem หรือ 20px */
+  row-gap: 4rem; /* ปรับค่าตามต้องการ เช่น 1rem หรือ 20px */
   margin-top: 30%;
 }
 
@@ -132,8 +132,18 @@
   flex-direction: column;
 }
 
-.top, .bottom {
-  flex: 1;
-  background-color: #e0e0e0;
-  /* เพิ่มสไตล์เพิ่มเติมตามต้องการ */
+
+.top{
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  margin-left: 5%;
+  height: 40%;
+}
+.img{
+  width: 75%;
+}
+
+.bottom{
+  height: 60%;
 }

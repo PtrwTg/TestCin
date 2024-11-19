@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Header from '../../components/Homebar/Homebar';
 import styles from './Project1.module.css';
+import column1Icon from './column1_1.svg';
 
 function Project1() {
   const [activeButton, setActiveButton] = useState('Unicourse Landing Page');
@@ -59,7 +60,9 @@ function Project1() {
             </div>
           </div>
           <div className={styles.right}>
-            <div className={styles.top}></div>
+            <div className={styles.top}>
+              <img className={styles.img} src={column1Icon} alt="column1" />
+            </div>
             <div className={styles.bottom}></div>
           </div>
         </div>
