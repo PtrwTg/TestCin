@@ -308,7 +308,7 @@
   }
 
   .head {
-    margin-left: 5%;
+    margin-left: 10%;
     margin-top: 2rem;
   }
 
@@ -337,7 +337,7 @@
 
   .text {
     width: 90%;
-    margin-left: 5%;
+    margin-left: 10%;
     font-size: 0.8rem;
   }
 
@@ -373,7 +373,7 @@
     margin-top: 8%;
   }
   .head {
-    margin-left: 5%;
+    margin-left: 10%;
     margin-top: 1px;
   }
 
@@ -417,6 +417,7 @@
   }
   .outcome{
     font-size: 0.5rem;
+    
   }
   .tools{
     margin-top: -5%;
