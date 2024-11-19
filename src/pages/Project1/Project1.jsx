@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Header from '../../components/Homebar/Homebar';
 import styles from './Project1.module.css';
-import column1Icon from './column1_1.svg';
+import Project1img from './column1_1.svg';
 import skillfigma from './figma.svg';
 import skillps from './Group37.svg';
 import skillvector from './Group36.svg';
@@ -12,8 +12,8 @@ function Project1() {
 
   const buttons = [
     'Unicourse Landing Page',
-    'MasterKids In House Page',
-    'My Old Design Portfolio',
+    'MasterKids (In-House)',
+    'My Old Portfolio Website',
     'Living House',
     '2 Hand',
     'Journal Mood',
@@ -25,7 +25,7 @@ function Project1() {
     <div className={styles.container}>
       <Header />
       <div className={styles.contentarea}>
-        <h1 className={styles.projectname}>Unicourse Landing Page</h1>
+        <h1 className={styles.projectname}>{activeButton}</h1>
         <div className={styles.hashtag}>
           <h6>#Landing Page</h6>
           <h6>#UX/UI Design</h6>
@@ -64,19 +64,21 @@ function Project1() {
           </div>
           <div className={styles.right}>
             <div className={styles.top}>
-              <img className={styles.img} src={column1Icon} alt="column1" />
+              <img className={styles.img} src={Project1img} alt="Project1img" />
             </div>
             <div className={styles.bottom}>
               <div className={styles.outcome}>
                 <h1 className={styles.head}>Out Come</h1>
-                <p className={styles.text}>In this Unicourse landing page project, I am responsible for the complete design, except for some graphic elements. In This project we create a modern, futuristic landing page with neon tones. This design will attract attention with a futuristic theme while inspiring confidence in learning AI.</p>
+                <p className={styles.text}>
+                  In this {activeButton} project, I am responsible for the complete design, except for some graphic elements. In this project, we created a modern, futuristic landing page with neon tones. This design will attract attention with a futuristic theme while inspiring confidence in learning AI.
+                </p>
               </div>
               <div className={styles.tools}>
                 <h1 className={styles.head}>Tools</h1>
                 <div className={styles.icon}>
-                  <img src={skillfigma} alt="figma" />
-                  <img src={skillps} alt="ps" />
-                  <img src={skillvector} alt="vector" />
+                  <img src={skillfigma} alt="Figma" />
+                  <img src={skillps} alt="Photoshop" />
+                  <img src={skillvector} alt="Vector" />
                 </div>
               </div>
             </div>

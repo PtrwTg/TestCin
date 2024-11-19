@@ -1,15 +1,24 @@
-/* Project1.module.css */
+/* src/pages/Project1/Project1.module.css */
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
 
 .contentarea {
   height: 180vh;
   display: flex;
   flex-direction: column;
+  padding: 2rem;
 }
 
 .projectname {
   font-family: 'Inter', sans-serif;
   color: #8BB0DB;
   font-size: 5rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .hashtag {
@@ -18,9 +27,8 @@
   display: flex;
   flex-direction: row;
   gap: 3rem;
-  justify-content: start;
-  padding-left: 20%;
-  margin-top: 2%;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .hashtag h6 {
@@ -28,8 +36,8 @@
   color: #8BB0DB;
   border-radius: 15px;
   border: 1px solid #000000;
-  padding: 5px;
-  width: 20%;
+  padding: 5px 10px;
+  width: auto;
 }
 
 .content {
@@ -42,10 +50,10 @@
 .left {
   width: 30%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
-.projectmenu{
+.projectmenu {
   border: 2px solid #8BB0DB;
   border-radius: 30px;
   width: 70%;
@@ -53,19 +61,21 @@
   display: flex;
   flex-direction: column;
   font-family: 'Inter', sans-serif;
+  padding: 1rem;
 }
 
 .name {
   margin-top: 10%;
   text-align: start;
   margin-left: 10%;
-  font-size:2.5rem;
+  font-size: 2.5rem;
+  color: #8BB0DB;
 }
 
-.contact{
+.contact {
   margin-top: 10%;
   text-align: start;
-  font-size:1rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -77,9 +87,11 @@
   padding-top: 2px;
 }
 
-.email, .tel{
+.email, .tel {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .email svg, .tel svg {
@@ -87,28 +99,28 @@
   color: #8BB0DB;
 }
 
-.tel{
+.tel {
   margin-top: 5%;
 }
 
-.menu{
+.menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 4rem; /* ปรับค่าตามต้องการ เช่น 1rem หรือ 20px */
-  margin-top: 30%;
+  row-gap: 1rem;
+  margin-top: 15%;
 }
 
 .menu button {
   font-size: 1.4rem;
   color: #8BB0DB;
   font-family: 'Inter', sans-serif;
-  background: none;      
-  border: none;          
-  padding: 12px 18px;          
-  cursor: pointer;      
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: none;
+  border: none;
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;
   border-radius: 30px;
 }
 
@@ -116,14 +128,14 @@
   background-color: #8BB0DB;
   color: #ffffff;
   border-radius: 30px;
-  padding: 12px 18px;
+  padding: 14px 22px; /* เพิ่มขนาดเมื่อ hover */
 }
 
 .button.active {
   background-color: #8BB0DB;
   color: #ffffff;
   border-radius: 30px;
-  padding: 12px 18px;
+  padding: 14px 22px; /* เพิ่มขนาดเมื่อ active */
 }
 
 .right {
@@ -132,48 +144,63 @@
   flex-direction: column;
 }
 
-
-.top{
+.top {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   margin-left: 5%;
   height: 40%;
 }
-.img{
+
+.img {
   width: 75%;
 }
 
-.bottom{
+.bottom {
   height: 60%;
   display: flex;
   flex-direction: column;
 }
-.outcome{
+
+.outcome {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
 }
-.head{
+
+.head {
   font-size: 2rem;
   font-family: 'Inter', sans-serif;
   text-align: start;
   margin-left: 5%;
   margin-top: 5%;
+  color: #8BB0DB;
 }
-.text{
-  margin-top: 5%;
+
+.text {
+  margin-top: 1rem;
   text-align: start;
   margin-left: 5%;
   width: 75%;
   font-size: 1.3rem;
   font-family: 'Inter', sans-serif;
   line-height: 2rem;
+  color: #333333;
 }
 
-.icon{
+.tools {
+  margin-top: 2rem;
+}
+
+.icon {
   display: flex;
   flex-direction: row;
-  margin-top: 5%;
+  margin-top: 1rem;
   margin-left: 5%;
   gap: 2rem;
+}
+
+.icon img {
+  width: 50px;
+  height: 50px;
 }
