@@ -14,14 +14,14 @@ function Myproject() {
             <Link to="/Project2" className={`${styles.image} ${styles.column1_2}`}></Link>
           </div>
           <div className={styles.rows2}>
-            <div className={`${styles.image} ${styles.column2_1}`}></div>
-            <div className={`${styles.image} ${styles.column2_2}`}></div>
-            <div className={`${styles.image} ${styles.column2_3}`}></div>
+            <Link to="/Project3" className={`${styles.image} ${styles.column2_1}`}></Link>
+            <Link to="/Project4" className={`${styles.image} ${styles.column2_2}`}></Link>
+            <Link to="/Project5" className={`${styles.image} ${styles.column2_3}`}></Link>
           </div>
           <div className={styles.rows3}>
-            <div className={`${styles.image} ${styles.column3_1}`}></div>
-            <div className={`${styles.image} ${styles.column3_2}`}></div>
-            <div className={`${styles.image} ${styles.column3_3}`}></div>
+            <Link to="/Project6" className={`${styles.image} ${styles.column3_1}`}></Link>
+            <Link to="/Project7" className={`${styles.image} ${styles.column3_2}`}></Link>
+            <Link to="/Project8" className={`${styles.image} ${styles.column3_3}`}></Link>
           </div>
         </div>
       </div>
