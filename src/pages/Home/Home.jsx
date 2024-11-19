@@ -1,5 +1,6 @@
 // src/pages/Home/Home.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../../components/Header/Header.jsx';
 import ImageComponent from '../../components/ImageComponent/ImageComponent.jsx';
 import styles from './Home.module.css';
@@ -51,10 +52,10 @@ import CinqPurish from '../../components/ImageComponent/CinqPurish.svg';
 // ภาพจาก CinqImage
 import Cinqimg from '../../components/CinqImage/Cinqimg.svg';
 
-
-
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+  const aboutMeRef = useRef(null); // สร้าง reference สำหรับ Aboutme
 
   useEffect(() => {
     const images = [
@@ -113,6 +114,12 @@ const Home = () => {
       });
   }, []);
 
+  useEffect(() => {
+    if (location.state?.scrollTo === 'aboutme' && aboutMeRef.current) {
+      aboutMeRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location.state]);
+
   return (
     <>
       {isLoading ? (
@@ -121,7 +128,9 @@ const Home = () => {
         <div className={styles.container}>
           <Header />
           <ImageComponent />
-          <Aboutme />
+          <div ref={aboutMeRef}>
+            <Aboutme />
+          </div>
           <div className={styles.box}></div>
           <div className={styles.containerdetail}>
             <div className={styles.detailleft}>
