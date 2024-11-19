@@ -30,7 +30,7 @@ function Project1() {
     },
     'MasterKids (In-House)': {
       projectname: 'MasterKids (In-House)',
-      hashtags: ['#In-House-Page', '#UX/UI Design', '#WIX'],
+      hashtags: ['#In-House-Page', '#UX/UI Design', '#WIX Design'],
       img: Project2img,
       text: 'Design the In-house page of MasterKids Thailand in a formal tone by using MasterKids color scheme, adjusted to appear calm and professional, while organizing elements in an orderly fashion to reflect the commitment to developing childrens skills and potential.',
       tools: [skillwix],
