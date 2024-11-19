@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import Header from '../../components/Homebar/Homebar';
 import styles from './Project1.module.css';
 import column1Icon from './column1_1.svg';
+import skillfigma from './figma.svg';
+import skillps from './Group37.svg';
+import skillvector from './Group36.svg';
 
 function Project1() {
   const [activeButton, setActiveButton] = useState('Unicourse Landing Page');
@@ -63,7 +66,20 @@ function Project1() {
             <div className={styles.top}>
               <img className={styles.img} src={column1Icon} alt="column1" />
             </div>
-            <div className={styles.bottom}></div>
+            <div className={styles.bottom}>
+              <div className={styles.outcome}>
+                <h1 className={styles.head}>Out Come</h1>
+                <p className={styles.text}>In this Unicourse landing page project, I am responsible for the complete design, except for some graphic elements. In This project we create a modern, futuristic landing page with neon tones. This design will attract attention with a futuristic theme while inspiring confidence in learning AI.</p>
+              </div>
+              <div className={styles.tools}>
+                <h1 className={styles.head}>Tools</h1>
+                <div className={styles.icon}>
+                  <img src={skillfigma} alt="figma" />
+                  <img src={skillps} alt="ps" />
+                  <img src={skillvector} alt="vector" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

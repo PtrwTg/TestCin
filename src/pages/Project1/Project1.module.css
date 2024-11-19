@@ -146,4 +146,34 @@
 
 .bottom{
   height: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.outcome{
+  display: flex;
+  flex-direction: column;
+}
+.head{
+  font-size: 2rem;
+  font-family: 'Inter', sans-serif;
+  text-align: start;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+.text{
+  margin-top: 5%;
+  text-align: start;
+  margin-left: 5%;
+  width: 75%;
+  font-size: 1.3rem;
+  font-family: 'Inter', sans-serif;
+  line-height: 2rem;
+}
+
+.icon{
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+  margin-left: 5%;
+  gap: 2rem;
 }
