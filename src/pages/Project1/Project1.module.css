@@ -211,11 +211,24 @@
   flex-wrap: wrap; 
 }
 
+/* ปรับปรุงการจัดการภาพเครื่องมือ */
 .icon img {
   width: 5rem;
   height: 5rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
 }
 
+.skillIcon {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.skillIcon:hover {
+  transform: scale(1.1);
+}
+
+/* การทำให้โปรเจกต์เปลี่ยนอย่างสมูท */
 .fade {
   opacity: 0;
+  transition: opacity 0.5s ease;
 }

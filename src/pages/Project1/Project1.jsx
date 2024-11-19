@@ -14,12 +14,15 @@ import skillfigma from './figma.svg';
 import skillps from './Group37.svg';
 import skillmiro from './Group36.svg';
 import skillwix from './Group42.svg';
-import skillprocreate from './procreate.svg';
-import skillunity from './unity.svg';
+import skillfigmahover from './figma_ani.svg';
+import skillpshover from './Group37_ani.svg';
+import skillmirohover from './Group36_ani.svg';
+import skillwixhover from './Group42_ani.svg';
 
 function Project1() {
   const [activeButton, setActiveButton] = useState('Unicourse Landing Page');
   const [isFading, setIsFading] = useState(false);
+  const [hoveredTool, setHoveredTool] = useState(null); // สถานะของเครื่องมือที่ถูกโฮเวอร์
 
   const projects = {
     'Unicourse Landing Page': {
@@ -27,56 +30,82 @@ function Project1() {
       hashtags: ['#Landing Page', '#UX/UI Design'],
       img: Project1img,
       text: 'In this Unicourse Landing Page project, I am responsible for the complete design, except for some graphic elements. In this project, we created a modern, futuristic landing page with neon tones. This design will attract attention with a futuristic theme while inspiring confidence in learning AI.',
-      tools: [skillfigma, skillps, skillmiro],
+      tools: [
+        { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
+        { normal: skillps, hover: skillpshover, alt: 'Photoshop' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+      ],
     },
     'MasterKids (In-House)': {
       projectname: 'MasterKids (In-House)',
       hashtags: ['#In-House-Page', '#UX/UI Design', '#WIX Design'],
       img: Project2img,
       text: 'Design the In-house page of MasterKids Thailand in a formal tone by using MasterKids color scheme, adjusted to appear calm and professional, while organizing elements in an orderly fashion to reflect the commitment to developing childrens skills and potential.',
-      tools: [skillwix],
+      tools: [
+        { normal: skillwix, hover: skillwixhover, alt: 'WIX' },
+      ],
     },
     'My Old Portfolio Website': {
       projectname: 'My Old Portfolio Website',
       hashtags: ['#Portfolio Website', '#UX/UI Design '],
       img: Project3img,
       text: 'The outcome of my designed ( old ) portfolio website featuring a light background and improved a user-friendly and visually appealing platform accessible across all devices, enhancing engagement, and effectively showcasing my work to a broader audience.',
-      tools: [skillfigma, skillps, skillmiro],
+      tools: [
+        { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
+        { normal: skillps, hover: skillpshover, alt: 'Photoshop' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+      ],
     },
     'Living House': {
       projectname: 'Living House',
       hashtags: ['#Web Design', '#UX/UI Design ','#Portfolio Project'],
       img: Project4img,
       text: 'This is a website project I designed for my portfolio, where I intentionally created a user-friendly experience with a visually appealing UI. The well-organized information and intuitive navigation enhance clarity, while effective assembly visualization empowers users to make informed decisions confidently, ultimately improving their overall satisfaction with the online shopping experience.',
-      tools: [skillfigma, skillps, skillmiro],
+      tools: [
+        { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
+        { normal: skillps, hover: skillpshover, alt: 'Photoshop' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+      ],
     },
     '2 Hand': {
       projectname: '2 Hand',
       hashtags: ['#Application Design', '#UX/UI Design ','#Portfolio Project'],
       img: Project5img,
       text: 'This is a website project I designed for my portfolio. The site is dedicated to selling vinyl records directly from retailers, where I intentionally addressed the pain points of complex navigation and poorly organized information. This approach resulted in a streamlined user experience, improved accessibility for all users, and enhanced clarity in finding and accessing relevant information, ultimately leading to increased user engagement and satisfaction.',
-      tools: [skillfigma, skillmiro],
+      tools: [
+        { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+      ],
     },
     'Journal Mood': {
       projectname: 'Journal Mood',
       hashtags: ['#App Design', '#User Experience'],
       img: Project6img,
       text: 'This is a mobile project I designed for my portfolio. JournalMood is your personal companion for reflection and emotional well-being. I took the pain points of other diary applications and improved them, ultimately leading to the solution of JournalMood. We aimed to create a diary app that felt like a trusted friend—light-hearted yet safe. To achieve this, I selected soothing colors that provide a comfortable experience, avoiding any heavy or oppressive feelings during use.',
-      tools: [skillfigma, skillmiro],
+      tools: [
+        { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+      ],
     },
     'Pocket': {
       projectname: 'Pocket',
       hashtags: ['#Application Design', '#UX/UI Design ','#Portfolio Project'],
       img: Project7img,
       text: 'This is a mobile project I designed for my portfolio. Pocket represents a new generation of mobile banking, addressing common pain points found in some other banking apps. Its innovative solutions lead to an enhanced user experience, increased engagement, and empowered financial decision-making for users. Pocket offers a modern, intuitive design with robust features, user-centric customization, and goal-setting capabilities.',
-      tools: [skillfigma, skillmiro],
+      tools: [
+        { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+      ],
     },
     'Wonder': {
       projectname: 'Wonder',
       hashtags: ['#Application Design', '#UX/UI Design ','#Portfolio Project'],
       img: Project8img,
       text: 'This is my first mobile project designed for my portfolio. Wonder is an inclusive app created for members of the queer community who seek to forge genuine connections and meaningful friendships. We aimed to design a friendship app that focuses on interaction and conversation rather than dating. As this was my first project in the UX/UI design field, it contains some mistakes; however, I want to keep it in my portfolio to showcase my growth and development in this area.',
-      tools: [skillfigma, skillmiro],
+      tools: [
+        { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+      ],
     },
   };
 
@@ -88,7 +117,7 @@ function Project1() {
     setTimeout(() => {
       setActiveButton(btn);
       setIsFading(false);
-    }, 500); // Duration should match the CSS transition duration
+    }, 500); // ระยะเวลาควรตรงกับ duration ใน CSS transition
   };
 
   return (
@@ -135,7 +164,11 @@ function Project1() {
           </div>
           <div className={styles.right}>
             <div className={styles.top}>
-              <img className={`${styles.img} ${isFading ? styles.fade : ''}`} src={currentProject.img} alt={currentProject.projectname} />
+              <img
+                className={`${styles.img} ${isFading ? styles.fade : ''}`}
+                src={currentProject.img}
+                alt={currentProject.projectname}
+              />
             </div>
             <div className={`${styles.bottom} ${isFading ? styles.fade : ''}`}>
               <div className={styles.outcome}>
@@ -146,7 +179,14 @@ function Project1() {
                 <h1 className={styles.head}>Tools</h1>
                 <div className={styles.icon}>
                   {currentProject.tools.map((tool, index) => (
-                    <img key={index} src={tool} alt={`tool-${index}`} />
+                    <img
+                      key={index}
+                      src={hoveredTool === index ? tool.hover : tool.normal}
+                      alt={tool.alt}
+                      onMouseEnter={() => setHoveredTool(index)}
+                      onMouseLeave={() => setHoveredTool(null)}
+                      className={styles.skillIcon}
+                    />
                   ))}
                 </div>
               </div>
