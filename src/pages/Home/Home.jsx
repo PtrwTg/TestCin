@@ -47,9 +47,9 @@ import column3_3 from '../../components/Myproject/column3_3.svg';
 import column3_3_ani from '../../components/Myproject/column3_3_ani.svg';
 
 // ภาพจาก ImageComponent
-import CinqPurish from '../../components/ImageComponent/CinqPurish.svg;'
+import CinqPurish from '../../components/ImageComponent/CinqPurish.svg';
 // ภาพจาก CinqImage
-import Cinqimg from '../../components/CinqImage/CinqImage.svg'
+import Cinqimg from '../../components/CinqImage/Cinqimg.svg';
 
 
 
