@@ -12,7 +12,7 @@
 }
 
 .imgArea {
-  margin-top: 5%;
+  margin-top: 1%;
   display: flex;
   justify-content: center;
   height: 100%;
@@ -21,7 +21,7 @@
 .icon {
   position: relative;
   width: 10%;
-  height: 100px; /* ปรับความสูงตามต้องการ */
+  height: 100px; 
   margin-left: 5%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -62,7 +62,7 @@
 .tooltip::after {
   content: '';
   position: absolute;
-  top: 100%; /* At the bottom of the tooltip */
+  top: 100%; 
   left: 50%;
   transform: translateX(-50%);
   border-width: 5px;
