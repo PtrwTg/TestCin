@@ -25,9 +25,9 @@
 }
 
 .aboutMe:hover, .myWork:hover {
-  color: white; /* เปลี่ยนสีตัวอักษรเป็นสีขาว */
-  background-color: #8bb0db; /* เปลี่ยนพื้นหลังเป็นสีฟ้า */
-  border-color: #8bb0db; /* เปลี่ยนกรอบเป็นสีฟ้า */
+  color: white; 
+  background-color: #8bb0db; /*  */
+  border-color: #8bb0db; /*  */
 }
 
 /* Media Queries สำหรับหน้าจอขนาดเล็ก */
