@@ -55,7 +55,8 @@ import Cinqimg from '../../components/CinqImage/Cinqimg.svg';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  const aboutMeRef = useRef(null); // สร้าง reference สำหรับ Aboutme
+  const aboutMeRef = useRef(null); // Reference for Aboutme
+  const myProjectRef = useRef(null); // Reference for Myproject
 
   useEffect(() => {
     const images = [
@@ -110,13 +111,15 @@ const Home = () => {
       })
       .catch((err) => {
         console.error('Error loading images', err);
-        setIsLoading(false); // แม้จะมีบางภาพโหลดไม่สำเร็จ ก็ยังคงเปลี่ยนสเตตให้เป็นไม่โหลดแล้ว
+        setIsLoading(false); // Even if some images fail to load, stop loading state
       });
   }, []);
 
   useEffect(() => {
     if (location.state?.scrollTo === 'aboutme' && aboutMeRef.current) {
       aboutMeRef.current.scrollIntoView({ behavior: 'smooth' });
+    } else if (location.state?.scrollTo === 'myproject' && myProjectRef.current) {
+      myProjectRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [location.state]);
 
@@ -154,7 +157,9 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <Myproject />
+          <div ref={myProjectRef}>
+            <Myproject />
+          </div>
         </div>
       )}
     </>

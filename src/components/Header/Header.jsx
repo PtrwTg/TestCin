@@ -11,7 +11,7 @@ function Header() {
   };
 
   const handleMyWorkClick = () => {
-    navigate('/Project1');
+    navigate('/', { state: { scrollTo: 'myproject' } });
   };
 
   return (
