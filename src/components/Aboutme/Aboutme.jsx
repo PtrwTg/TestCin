@@ -1,9 +1,14 @@
+// src/components/Aboutme/Aboutme.jsx
 import React from 'react';
 import styles from './Aboutme.module.css';
 import Cinqimg from './Cinqimg.svg';
 import { FaArrowDown } from 'react-icons/fa';
 
 function Aboutme() {
+  const handleClick = (url) => {
+    window.open(url, '_blank');
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -29,9 +34,27 @@ function Aboutme() {
         </div>
         <div className={styles.bottom}>
           <div className={styles.contactbottonarea}>
-            <button className={styles.contactButton}>Bē</button>
-            <button className={styles.contactButton}>in</button>
-            <button className={styles.contactButton}>M</button>
+            <button
+              className={styles.contactButton}
+              onClick={() => handleClick('https://www.behance.net/190c15d9')}
+            >
+              Bē
+              <span className={styles.tooltip}>Hello Behance 👋</span>
+            </button>
+            <button
+              className={styles.contactButton}
+              onClick={() => handleClick('https://www.linkedin.com/in/purichk/')}
+            >
+              in
+              <span className={styles.tooltip}>Hello LinkedIn 👋</span>
+            </button>
+            <button
+              className={styles.contactButton}
+              onClick={() => handleClick('mailto:phurichaya.7502@gmail.com')}
+            >
+              M
+              <span className={styles.tooltip}>Hello Email 👋</span>
+            </button>
           </div>
         </div>
       </div>

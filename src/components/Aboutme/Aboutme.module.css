@@ -1,3 +1,4 @@
+/* src/components/Aboutme/Aboutme.module.css */
 .container {
     display: flex;
     height: 100vh;
@@ -29,7 +30,7 @@
 }
 
 .head {
-    font-family: 'inter', sans-serif;
+    font-family: 'Inter', sans-serif;
     width: 65%;
     color: #8BB0DB;
 }
@@ -49,16 +50,19 @@
     max-width: 100%;
     height: auto;
 }
+
 .textarea{
     display: flex;
     flex-direction: column;
     height: 75%;
     width: 70%;
-    font-family: 'inter', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
+
 .p {
     text-align: center;
 }
+
 .last {
     text-align: end;
 }
@@ -85,20 +89,23 @@
 
 .icon {
     font-size: 2rem; 
-  }
+}
+
 .button:hover {
     color: #8BB0DB; 
     background-color: white; 
-  }
-  .contactbottonarea {
+}
+
+.contactbottonarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 50%;
     width: 75%;
-  }
-  
-  .contactButton {
+}
+
+.contactButton {
+    position: relative; /* For tooltip positioning */
     border: 1px solid #8BB0DB;
     background-color: white;
     font-family: 'Inter', sans-serif;
@@ -109,6 +116,7 @@
     width: 20%;
     font-size: 2.5rem;
     transition: background-color 0.3s ease, color 0.3s ease; /* เพิ่มการ transition */
+    overflow: visible; /* Ensure tooltip is visible */
 }
 
 .contactButton:hover {
@@ -116,6 +124,45 @@
     color: white;
 }
 
+/* Tooltip styles */
+.tooltip {
+    font-family: 'Inter', sans-serif;
+    visibility: hidden;
+    width: max-content;
+    background-color: #000000;
+    font-size: 0.9rem;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 10;
+    bottom: 110%; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.contactButton:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Add arrow below the tooltip */
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #000000 transparent transparent transparent;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -160,5 +207,10 @@
     }
     .last{
         margin-right: 15%;
+    }
+
+    /* Adjust tooltip positioning for mobile if needed */
+    .tooltip {
+        bottom: 130%; /* Adjust as necessary */
     }
 }
