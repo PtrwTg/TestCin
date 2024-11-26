@@ -3,10 +3,17 @@ import React from 'react';
 import styles from './Aboutme.module.css';
 import Cinqimg from './Cinqimg.svg';
 import { FaArrowDown } from 'react-icons/fa';
+import Resume from './resume.pdf';
 
 function Aboutme() {
-  const handleClick = (url) => {
-    window.open(url, '_blank');
+  const handleDownload = () => {
+    // สร้างลิงก์ชั่วคราวเพื่อดาวน์โหลดไฟล์ PDF
+    const link = document.createElement('a');
+    link.href = Resume;
+    link.download = 'resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -25,9 +32,13 @@ function Aboutme() {
                 storyteller through creating engaging and friendly
                 user experiences.
               </p>
-              <p className={styles.last}>Here’s my CV</p>
+              {/* เพิ่ม onClick ที่นี่ */}
+              <p className={styles.last} onClick={handleDownload} style={{ cursor: 'pointer' }}>
+                Here’s my CV
+              </p>
             </div>
-            <button className={styles.button}>
+            {/* เพิ่ม onClick ที่นี่ */}
+            <button className={styles.button} onClick={handleDownload}>
               <FaArrowDown className={styles.icon} />
             </button>
           </div>
