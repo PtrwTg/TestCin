@@ -202,6 +202,13 @@
     }
     .textarea{
         width: 90%;
+        font-size: 1rem;
+    }
+    .p{
+
+    }
+    .last{
+        width: 40%;
     }
     .right{
         margin-top: 10%;
