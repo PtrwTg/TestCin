@@ -11,8 +11,8 @@ function Myproject() {
     'Living House',
     '2 Hand',
     'Journal Mood',
-    'Pocket',
     'Wonder',
+    'Pocket',
   ];
 
   return (

@@ -1,12 +1,20 @@
+// src/components/ImageComponent/ImageComponent.jsx
 import React from 'react';
 import styles from './ImageComponent.module.css';
-import CinqPurish from './CinqPurish.svg';
+import FlowerLoader from '../FlowerLoader/FlowerLoader.jsx';
 
 const ImageComponent = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.TextImgArea}>
-      <img src={CinqPurish} alt="Centered" className={styles.image} />
+      <div className={styles.centerarea}>
+        <h1>Cinq</h1>
+        <h1 className={styles.lastname}>
+          Pur
+          <span className={styles.iContainer}>
+            i
+          </span>
+          ch
+        </h1>
       </div>
     </div>
   );

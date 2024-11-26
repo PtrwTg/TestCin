@@ -90,21 +90,21 @@ function Project1() {
         { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
       ],
     },
-    'Pocket': {
-      projectname: 'Pocket',
-      hashtags: ['#Application Design', '#UX/UI Design', '#Portfolio Project'],
-      img: Project7img,
-      text: 'This is a mobile project I designed for my portfolio. Pocket represents a new generation of mobile banking, addressing common pain points found in some other banking apps. Its innovative solutions lead to an enhanced user experience, increased engagement, and empowered financial decision-making for users. Pocket offers a modern, intuitive design with robust features, user-centric customization, and goal-setting capabilities.',
-      tools: [
-        { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
-        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
-      ],
-    },
     'Wonder': {
       projectname: 'Wonder',
       hashtags: ['#Application Design', '#UX/UI Design', '#Portfolio Project'],
       img: Project8img,
       text: 'This is my first mobile project designed for my portfolio. Wonder is an inclusive app created for members of the queer community who seek to forge genuine connections and meaningful friendships. We aimed to design a friendship app that focuses on interaction and conversation rather than dating. As this was my first project in the UX/UI design field, it contains some mistakes; however, I want to keep it in my portfolio to showcase my growth and development in this area.',
+      tools: [
+        { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+      ],
+    },
+    'Pocket': {
+      projectname: 'Pocket',
+      hashtags: ['#Application Design', '#UX/UI Design', '#Portfolio Project'],
+      img: Project7img,
+      text: 'This is a mobile project I designed for my portfolio. Pocket represents a new generation of mobile banking, addressing common pain points found in some other banking apps. Its innovative solutions lead to an enhanced user experience, increased engagement, and empowered financial decision-making for users. Pocket offers a modern, intuitive design with robust features, user-centric customization, and goal-setting capabilities.',
       tools: [
         { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
         { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
