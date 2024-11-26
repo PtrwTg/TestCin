@@ -35,8 +35,8 @@ function Project1() {
       text: 'In this Unicourse Landing Page project, I am responsible for the complete design, except for some graphic elements. In this project, we created a modern, futuristic landing page with neon tones. This design will attract attention with a futuristic theme while inspiring confidence in learning AI.',
       tools: [
         { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
-        { normal: skillps, hover: skillpshover, alt: 'Photoshop' },
-        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+        { normal: skillps, hover: skillpshover, alt: 'Miro' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Photoshop' },
       ],
     },
     'MasterKids (In-House)': {
@@ -55,8 +55,8 @@ function Project1() {
       text: 'The outcome of my designed ( old ) portfolio website featuring a light background and improved a user-friendly and visually appealing platform accessible across all devices, enhancing engagement, and effectively showcasing my work to a broader audience.',
       tools: [
         { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
-        { normal: skillps, hover: skillpshover, alt: 'Photoshop' },
-        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+        { normal: skillps, hover: skillpshover, alt: 'Miro' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Photoshop' },
       ],
     },
     'Living House': {
@@ -66,8 +66,8 @@ function Project1() {
       text: 'This is a website project I designed for my portfolio, where I intentionally created a user-friendly experience with a visually appealing UI. The well-organized information and intuitive navigation enhance clarity, while effective assembly visualization empowers users to make informed decisions confidently, ultimately improving their overall satisfaction with the online shopping experience.',
       tools: [
         { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
-        { normal: skillps, hover: skillpshover, alt: 'Photoshop' },
-        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+        { normal: skillps, hover: skillpshover, alt: 'Miro' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Photoshop' },
       ],
     },
     '2 Hand': {
@@ -77,7 +77,7 @@ function Project1() {
       text: 'This is a website project I designed for my portfolio. The site is dedicated to selling vinyl records directly from retailers, where I intentionally addressed the pain points of complex navigation and poorly organized information. This approach resulted in a streamlined user experience, improved accessibility for all users, and enhanced clarity in finding and accessing relevant information, ultimately leading to increased user engagement and satisfaction.',
       tools: [
         { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
-        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Photoshop' },
       ],
     },
     'Journal Mood': {
@@ -87,7 +87,7 @@ function Project1() {
       text: 'This is a mobile project I designed for my portfolio. JournalMood is your personal companion for reflection and emotional well-being. I took the pain points of other diary applications and improved them, ultimately leading to the solution of JournalMood. We aimed to create a diary app that felt like a trusted friend—light-hearted yet safe. To achieve this, I selected soothing colors that provide a comfortable experience, avoiding any heavy or oppressive feelings during use.',
       tools: [
         { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
-        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Photoshop' },
       ],
     },
     'Wonder': {
@@ -97,7 +97,7 @@ function Project1() {
       text: 'This is my first mobile project designed for my portfolio. Wonder is an inclusive app created for members of the queer community who seek to forge genuine connections and meaningful friendships. We aimed to design a friendship app that focuses on interaction and conversation rather than dating. As this was my first project in the UX/UI design field, it contains some mistakes; however, I want to keep it in my portfolio to showcase my growth and development in this area.',
       tools: [
         { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
-        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Photoshop' },
       ],
     },
     'Pocket': {
@@ -107,7 +107,7 @@ function Project1() {
       text: 'This is a mobile project I designed for my portfolio. Pocket represents a new generation of mobile banking, addressing common pain points found in some other banking apps. Its innovative solutions lead to an enhanced user experience, increased engagement, and empowered financial decision-making for users. Pocket offers a modern, intuitive design with robust features, user-centric customization, and goal-setting capabilities.',
       tools: [
         { normal: skillfigma, hover: skillfigmahover, alt: 'Figma' },
-        { normal: skillmiro, hover: skillmirohover, alt: 'Miro' },
+        { normal: skillmiro, hover: skillmirohover, alt: 'Photoshop' },
       ],
     },
   };
