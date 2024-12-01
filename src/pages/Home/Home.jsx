@@ -123,6 +123,83 @@ const Home = () => {
     }
   }, [location.state]);
 
+  const hashtags = [
+    { text: '#wireframe', color: 'lightblue' },
+    { text: '#user_interface', color: 'lightgreen' },
+    { text: '#user_experience', color: '#FFE5A5' },
+    { text: '#prototype', color: 'lightgreen' },
+    { text: '#user_journey', color: '#FFB5E8' },
+    { text: '#design_system', color: '#FFD4CC' },
+    { text: '#Information Architecture(IA)', color: 'lightblue' },
+    { text: '#figma', color: '#FFB5E8' }
+  ];
+
+  // คำนวณตำแหน่งเริ่มต้นของแฮชแท็กแต่ละอัน
+  const calculateInitialPositions = () => {
+    const positions = [];
+    const columns = 4; // จำนวนคอลัมน์
+    const horizontalGap = 20; // ระยะห่างแนวนอน
+    const verticalGap = 20; // ระยะห่างแนวตั้ง
+    const startX = 50; // ระยะห่างจากขอบซ้าย
+    const startY = 20; // ระยะห่างจากขอบบน
+
+    hashtags.forEach((tag, index) => {
+      const column = index % columns;
+      const row = Math.floor(index / columns);
+      positions.push({
+        ...tag,
+        position: {
+          x: startX + (column * 200), // 200px ต่อคอลัมน์
+          y: startY + (row * 50), // 50px ต่อแถว
+        },
+        isDragging: false
+      });
+    });
+    return positions;
+  };
+
+  const [draggedHashtags, setDraggedHashtags] = useState(calculateInitialPositions());
+
+  const handleDragStart = (e, index) => {
+    const newHashtags = [...draggedHashtags];
+    newHashtags[index].isDragging = true;
+    
+    // เก็บตำแหน่งเมาส์เริ่มต้นเทียบกับ element
+    const rect = e.target.getBoundingClientRect();
+    newHashtags[index].offsetX = e.clientX - rect.left;
+    newHashtags[index].offsetY = e.clientY - rect.top;
+    
+    setDraggedHashtags(newHashtags);
+  };
+
+  const handleDrag = (e, index) => {
+    if (!e.clientX || !e.clientY) return;
+
+    const boxRect = document.querySelector(`.${styles.box}`).getBoundingClientRect();
+    const hashtagRect = e.target.getBoundingClientRect();
+
+    // คำนวณตำแหน่งใหม่
+    const newX = e.clientX - boxRect.left - draggedHashtags[index].offsetX;
+    const newY = e.clientY - boxRect.top - draggedHashtags[index].offsetY;
+
+    // กำหนดขอบเขตการเคลื่อนที่
+    const maxX = boxRect.width - hashtagRect.width;
+    const maxY = boxRect.height - hashtagRect.height;
+
+    const newHashtags = [...draggedHashtags];
+    newHashtags[index].position = {
+      x: Math.max(0, Math.min(newX, maxX)),
+      y: Math.max(0, Math.min(newY, maxY))
+    };
+    setDraggedHashtags(newHashtags);
+  };
+
+  const handleDragEnd = (index) => {
+    const newHashtags = [...draggedHashtags];
+    newHashtags[index].isDragging = false;
+    setDraggedHashtags(newHashtags);
+  };
+
   return (
     <>
       {isLoading ? (
@@ -134,7 +211,27 @@ const Home = () => {
           <div ref={aboutMeRef}>
             <Aboutme />
           </div>
-          <div className={styles.box}></div>
+          <div className={styles.box}>
+            {draggedHashtags.map((tag, index) => (
+              <span 
+                key={index} 
+                className={styles.hashtag}
+                style={{
+                  backgroundColor: tag.color,
+                  position: 'absolute',
+                  left: `${tag.position.x}px`,
+                  top: `${tag.position.y}px`,
+                  cursor: 'move'
+                }}
+                draggable="true"
+                onDragStart={(e) => handleDragStart(e, index)}
+                onDrag={(e) => handleDrag(e, index)}
+                onDragEnd={() => handleDragEnd(index)}
+              >
+                {tag.text}
+              </span>
+            ))}
+          </div>
           <div className={styles.containerdetail}>
             <div className={styles.detailleft}>
               <div className={styles.softwareskill}>

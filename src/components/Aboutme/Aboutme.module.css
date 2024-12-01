@@ -218,7 +218,6 @@
         margin-right: 15%;
     }
 
-    /* Adjust tooltip positioning for mobile if needed */
     .tooltip {
         bottom: 130%; /* Adjust as necessary */
     }
