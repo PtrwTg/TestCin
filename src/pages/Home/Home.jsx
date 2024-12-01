@@ -137,24 +137,20 @@ const Home = () => {
   // คำนวณตำแหน่งเริ่มต้นของแฮชแท็กแต่ละอัน
   const calculateInitialPositions = () => {
     const positions = [];
-    const columns = 4; // จำนวนคอลัมน์
-    const horizontalGap = 20; // ระยะห่างแนวนอน
-    const verticalGap = 20; // ระยะห่างแนวตั้ง
-    const startX = 50; // ระยะห่างจากขอบซ้าย
-    const startY = 20; // ระยะห่างจากขอบบน
+    const startY = 40; // ระยะห่างจากด้านบน
 
-    hashtags.forEach((tag, index) => {
-      const column = index % columns;
-      const row = Math.floor(index / columns);
-      positions.push({
-        ...tag,
-        position: {
-          x: startX + (column * 200), // 200px ต่อคอลัมน์
-          y: startY + (row * 50), // 50px ต่อแถว
-        },
-        isDragging: false
-      });
-    });
+    // แถวที่ 1
+    positions.push({ ...hashtags[0], position: { x: 50, y: startY }, isDragging: false }); // #wireframe
+    positions.push({ ...hashtags[1], position: { x: 400, y: startY }, isDragging: false }); // #user_interface
+    positions.push({ ...hashtags[2], position: { x: 700, y: startY }, isDragging: false }); // #user_experience
+    positions.push({ ...hashtags[3], position: { x: 1000, y: startY }, isDragging: false }); // #prototype
+
+    // แถวที่ 2
+    positions.push({ ...hashtags[4], position: { x: 150, y: startY + 60 }, isDragging: false }); // #user_journey
+    positions.push({ ...hashtags[5], position: { x: 300, y: startY + 60 }, isDragging: false }); // #design_system
+    positions.push({ ...hashtags[6], position: { x: 600, y: startY + 60 }, isDragging: false }); // #Information Architecture(IA)
+    positions.push({ ...hashtags[7], position: { x: 900, y: startY + 60 }, isDragging: false }); // #figma
+
     return positions;
   };
 
