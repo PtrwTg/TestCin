@@ -152,7 +152,8 @@
 
 @media (max-width: 480px) {
     .box {
-        height: 300px;
+        height: 200px;
+        width: 80%;
     }
 
     .hashtag {
