@@ -137,19 +137,59 @@ const Home = () => {
   // คำนวณตำแหน่งเริ่มต้นของแฮชแท็กแต่ละอัน
   const calculateInitialPositions = () => {
     const positions = [];
-    const startY = 40; // ระยะห่างจากด้านบน
+    const startY = 40;
+    const isMobile = window.innerWidth <= 768;
+    const boxWidth = document.querySelector(`.${styles.box}`)?.getBoundingClientRect().width || 1200;
 
-    // แถวที่ 1
-    positions.push({ ...hashtags[0], position: { x: 50, y: startY }, isDragging: false }); // #wireframe
-    positions.push({ ...hashtags[1], position: { x: 400, y: startY }, isDragging: false }); // #user_interface
-    positions.push({ ...hashtags[2], position: { x: 700, y: startY }, isDragging: false }); // #user_experience
-    positions.push({ ...hashtags[3], position: { x: 1000, y: startY }, isDragging: false }); // #prototype
+    if (isMobile) {
+      // ตำแหน่งสำหรับมือถือ - จัดเป็น 4 แถว แถวละ 2 items
+      const mobileLayout = [
+        { x: 0.1, y: startY },      // แถว 1 ซ้าย
+        { x: 0.6, y: startY },      // แถว 1 ขวา
+        { x: 0.1, y: startY + 50 }, // แถว 2 ซ้าย
+        { x: 0.6, y: startY + 50 }, // แถว 2 ขวา
+        { x: 0.1, y: startY + 100 }, // แถว 3 ซ้าย
+        { x: 0.6, y: startY + 100 }, // แถว 3 ขวา
+        { x: 0.1, y: startY + 150 }, // แถว 4 ซ้าย
+        { x: 0.6, y: startY + 150 }  // แถว 4 ขวา
+      ];
 
-    // แถวที่ 2
-    positions.push({ ...hashtags[4], position: { x: 150, y: startY + 60 }, isDragging: false }); // #user_journey
-    positions.push({ ...hashtags[5], position: { x: 300, y: startY + 60 }, isDragging: false }); // #design_system
-    positions.push({ ...hashtags[6], position: { x: 600, y: startY + 60 }, isDragging: false }); // #Information Architecture(IA)
-    positions.push({ ...hashtags[7], position: { x: 900, y: startY + 60 }, isDragging: false }); // #figma
+      hashtags.forEach((tag, index) => {
+        positions.push({
+          ...tag,
+          position: {
+            x: mobileLayout[index].x * boxWidth,
+            y: mobileLayout[index].y
+          },
+          isDragging: false
+        });
+      });
+    } else {
+      // ตำแหน่งสำหรับเดสก์ท็อป - จัดเป็น 3 แถว
+      const desktopLayout = [
+        { x: 0.1, y: startY },       // แถว 1
+        { x: 0.35, y: startY },
+        { x: 0.6, y: startY },
+        
+        { x: 0.2, y: startY + 50 },  // แถว 2
+        { x: 0.45, y: startY + 50 },
+        { x: 0.7, y: startY + 50 },
+        
+        { x: 0.3, y: startY + 100 }, // แถว 3
+        { x: 0.6, y: startY + 100 }
+      ];
+
+      hashtags.forEach((tag, index) => {
+        positions.push({
+          ...tag,
+          position: {
+            x: desktopLayout[index].x * boxWidth,
+            y: desktopLayout[index].y
+          },
+          isDragging: false
+        });
+      });
+    }
 
     return positions;
   };
@@ -195,6 +235,16 @@ const Home = () => {
     newHashtags[index].isDragging = false;
     setDraggedHashtags(newHashtags);
   };
+
+  // เพิ่ม useEffect เพื่อจัดการ resize
+  useEffect(() => {
+    const handleResize = () => {
+      setDraggedHashtags(calculateInitialPositions());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <>
