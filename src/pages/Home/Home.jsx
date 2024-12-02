@@ -14,8 +14,11 @@ import Softskill from '../../components/Softskill/Softskill.jsx';
 import Myproject from '../../components/Myproject/Myproject.jsx';
 import Aboutme from '../../components/Aboutme/Aboutme.jsx';
 import Preloader from '../../components/Preloader/Preloader.jsx';
+import { useSpring, animated, config } from '@react-spring/web';
+import { useDrag } from '@use-gesture/react';
+import Box2DFactory from 'box2d-wasm';
 
-// นำเข้าภาพทั้งหมดที่ต้องการ preload
+// นำเข้าภาพทั้งหมดทีต้องการ preload
 import figma from '../../components/Skill/figma.svg';
 import figma_ani from '../../components/Skill/figma_ani.svg';
 import group42 from '../../components/Skill/Group42.svg';
@@ -55,8 +58,15 @@ import Cinqimg from '../../components/CinqImage/Cinqimg.svg';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  const aboutMeRef = useRef(null); // Reference for Aboutme
-  const myProjectRef = useRef(null); // Reference for Myproject
+  const aboutMeRef = useRef(null);
+  const myProjectRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const boxRef = useRef(null);
+  const [box2d, setBox2d] = useState(null);
+  const worldRef = useRef(null);
+  const bodiesRef = useRef([]);
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [isDropping, setIsDropping] = useState(false);
 
   useEffect(() => {
     const images = [
@@ -111,7 +121,7 @@ const Home = () => {
       })
       .catch((err) => {
         console.error('Error loading images', err);
-        setIsLoading(false); // Even if some images fail to load, stop loading state
+        setIsLoading(false); 
       });
   }, []);
 
@@ -123,7 +133,7 @@ const Home = () => {
     }
   }, [location.state]);
 
-  const hashtags = [
+  const [hashtags] = useState([
     { text: '#wireframe', color: 'lightblue' },
     { text: '#user_interface', color: 'lightgreen' },
     { text: '#user_experience', color: '#FFE5A5' },
@@ -132,119 +142,129 @@ const Home = () => {
     { text: '#design_system', color: '#FFD4CC' },
     { text: '#Information Architecture(IA)', color: 'lightblue' },
     { text: '#figma', color: '#FFB5E8' }
-  ];
+  ]);
 
-  // คำนวณตำแหน่งเริ่มต้นของแฮชแท็กแต่ละอัน
-  const calculateInitialPositions = () => {
-    const positions = [];
-    const startY = 40;
-    const isMobile = window.innerWidth <= 768;
-    const boxWidth = document.querySelector(`.${styles.box}`)?.getBoundingClientRect().width || 1200;
+  // ตรวจจับเมื่อ box เข้ามาในวิวพอร์ต
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
 
-    if (isMobile) {
-      // ตำแหน่งสำหรับมือถือ - จัดเป็น 4 แถว แถวละ 2 items
-      const mobileLayout = [
-        { x: 0.1, y: startY },      // แถว 1 ซ้าย
-        { x: 0.6, y: startY },      // แถว 1 ขวา
-        { x: 0.1, y: startY + 50 }, // แถว 2 ซ้าย
-        { x: 0.6, y: startY + 50 }, // แถว 2 ขวา
-        { x: 0.1, y: startY + 100 }, // แถว 3 ซ้าย
-        { x: 0.6, y: startY + 100 }, // แถว 3 ขวา
-        { x: 0.1, y: startY + 150 }, // แถว 4 ซ้าย
-        { x: 0.6, y: startY + 150 }  // แถว 4 ขวา
-      ];
-
-      hashtags.forEach((tag, index) => {
-        positions.push({
-          ...tag,
-          position: {
-            x: mobileLayout[index].x * boxWidth,
-            y: mobileLayout[index].y
-          },
-          isDragging: false
-        });
-      });
-    } else {
-      // ตำแหน่งสำหรับเดสก์ท็อป - จัดเป็น 3 แถว
-      const desktopLayout = [
-        { x: 0.1, y: startY },       // แถว 1
-        { x: 0.35, y: startY },
-        { x: 0.6, y: startY },
-        
-        { x: 0.2, y: startY + 50 },  // แถว 2
-        { x: 0.45, y: startY + 50 },
-        { x: 0.7, y: startY + 50 },
-        
-        { x: 0.3, y: startY + 100 }, // แถว 3
-        { x: 0.6, y: startY + 100 }
-      ];
-
-      hashtags.forEach((tag, index) => {
-        positions.push({
-          ...tag,
-          position: {
-            x: desktopLayout[index].x * boxWidth,
-            y: desktopLayout[index].y
-          },
-          isDragging: false
-        });
-      });
+    if (boxRef.current) {
+      observer.observe(boxRef.current);
     }
 
-    return positions;
-  };
-
-  const [draggedHashtags, setDraggedHashtags] = useState(calculateInitialPositions());
-
-  const handleDragStart = (e, index) => {
-    const newHashtags = [...draggedHashtags];
-    newHashtags[index].isDragging = true;
-    
-    // เก็บตำแหน่งเมาส์เริ่มต้นเทียบกับ element
-    const rect = e.target.getBoundingClientRect();
-    newHashtags[index].offsetX = e.clientX - rect.left;
-    newHashtags[index].offsetY = e.clientY - rect.top;
-    
-    setDraggedHashtags(newHashtags);
-  };
-
-  const handleDrag = (e, index) => {
-    if (!e.clientX || !e.clientY) return;
-
-    const boxRect = document.querySelector(`.${styles.box}`).getBoundingClientRect();
-    const hashtagRect = e.target.getBoundingClientRect();
-
-    // คำนวณตำแหน่งใหม่
-    const newX = e.clientX - boxRect.left - draggedHashtags[index].offsetX;
-    const newY = e.clientY - boxRect.top - draggedHashtags[index].offsetY;
-
-    // กำหนดขอบเขตการเคลื่อนที่
-    const maxX = boxRect.width - hashtagRect.width;
-    const maxY = boxRect.height - hashtagRect.height;
-
-    const newHashtags = [...draggedHashtags];
-    newHashtags[index].position = {
-      x: Math.max(0, Math.min(newX, maxX)),
-      y: Math.max(0, Math.min(newY, maxY))
-    };
-    setDraggedHashtags(newHashtags);
-  };
-
-  const handleDragEnd = (index) => {
-    const newHashtags = [...draggedHashtags];
-    newHashtags[index].isDragging = false;
-    setDraggedHashtags(newHashtags);
-  };
-
-  // เพิ่ม useEffect เพื่อจัดการ resize
-  useEffect(() => {
-    const handleResize = () => {
-      setDraggedHashtags(calculateInitialPositions());
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => observer.disconnect();
   }, []);
+
+  // เริ่มต้น Box2D
+  useEffect(() => {
+    if (!isInitialized) {
+      Box2DFactory().then(box2d => {
+        setBox2d(box2d);
+        setIsInitialized(true);
+      });
+    }
+  }, [isInitialized]);
+
+  // สร้างโลกฟิสิกส์เมื่อ box2d พร้อม
+  useEffect(() => {
+    if (!box2d || !boxRef.current || !isDropping) return;
+
+    if (worldRef.current) {
+      bodiesRef.current.forEach(body => {
+        worldRef.current.DestroyBody(body);
+      });
+      bodiesRef.current = [];
+    }
+
+    const gravity = new box2d.b2Vec2(0, 15);
+    worldRef.current = new box2d.b2World(gravity);
+
+    const boxRect = boxRef.current.getBoundingClientRect();
+    const scale = 30;
+
+    // สร้างขอบเขต
+    const walls = [
+      // พื้น
+      { x: boxRect.width/2, y: boxRect.height, width: boxRect.width, height: 20 },
+      // ซ้าย
+      { x: 0, y: boxRect.height/2, width: 20, height: boxRect.height },
+      // ขวา
+      { x: boxRect.width, y: boxRect.height/2, width: 20, height: boxRect.height }
+    ];
+
+    walls.forEach(wall => {
+      const bodyDef = new box2d.b2BodyDef();
+      bodyDef.position.Set(wall.x/scale, wall.y/scale);
+      const body = worldRef.current.CreateBody(bodyDef);
+      const shape = new box2d.b2PolygonShape();
+      shape.SetAsBox(wall.width/(2*scale), wall.height/(2*scale));
+      body.CreateFixture(shape, 0);
+    });
+
+    // สร้าง hashtags แบบสุ่มตำแหน่ง
+    hashtags.forEach((tag, index) => {
+      const bodyDef = new box2d.b2BodyDef();
+      bodyDef.type = box2d.b2_dynamicBody;
+      
+      // สุ่มตำแหน่งเริ่มต้น
+      const randomX = Math.random() * (boxRect.width - 100) + 50;
+      const randomY = -Math.random() * 500; // เริ่มจากด้านบนที่ระดับความสูงต่างกัน
+      
+      bodyDef.position.Set(randomX/scale, randomY/scale);
+      bodyDef.angle = Math.random() * Math.PI; // สุ่มการหมุนเริ่มต้น
+
+      const body = worldRef.current.CreateBody(bodyDef);
+      const shape = new box2d.b2PolygonShape();
+      const width = tag.text.length * 4;
+      shape.SetAsBox(width/scale, 15/scale);
+
+      const fixtureDef = new box2d.b2FixtureDef();
+      fixtureDef.shape = shape;
+      fixtureDef.density = 1.0;
+      fixtureDef.friction = 0.3;
+      fixtureDef.restitution = 0.6; // เพิ่มค่าการกระเด้ง
+
+      body.CreateFixture(fixtureDef);
+      bodiesRef.current.push(body);
+    });
+
+    // อัพเดตการเคลื่อนที่
+    const animate = () => {
+      worldRef.current.Step(1/60, 8, 3);
+      
+      bodiesRef.current.forEach((body, index) => {
+        const position = body.GetPosition();
+        const angle = body.GetAngle();
+        const element = document.getElementById(`hashtag-${index}`);
+        if (element) {
+          element.style.transform = `translate(${position.x * scale}px, ${position.y * scale}px) rotate(${angle}rad)`;
+        }
+      });
+
+      requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      if (worldRef.current) {
+        bodiesRef.current.forEach(body => {
+          worldRef.current.DestroyBody(body);
+        });
+        bodiesRef.current = [];
+      }
+    };
+  }, [box2d, isVisible, isInitialized, isDropping]);
+
+  const handleDrop = () => {
+    setIsDropping(true);
+  };
 
   return (
     <>
@@ -257,26 +277,32 @@ const Home = () => {
           <div ref={aboutMeRef}>
             <Aboutme />
           </div>
-          <div className={styles.box}>
-            {draggedHashtags.map((tag, index) => (
-              <span 
-                key={index} 
-                className={styles.hashtag}
-                style={{
-                  backgroundColor: tag.color,
-                  position: 'absolute',
-                  left: `${tag.position.x}px`,
-                  top: `${tag.position.y}px`,
-                  cursor: 'move'
-                }}
-                draggable="true"
-                onDragStart={(e) => handleDragStart(e, index)}
-                onDrag={(e) => handleDrag(e, index)}
-                onDragEnd={() => handleDragEnd(index)}
-              >
-                {tag.text}
-              </span>
-            ))}
+          <div className={styles.boxContainer}>
+            <button 
+              className={styles.dropButton}
+              onClick={handleDrop}
+              disabled={isDropping}
+            >
+              Drop Hashtags
+            </button>
+            <div ref={boxRef} className={styles.box}>
+              {hashtags.map((tag, index) => (
+                <div
+                  key={index}
+                  id={`hashtag-${index}`}
+                  className={styles.hashtag}
+                  style={{
+                    backgroundColor: tag.color,
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    opacity: isDropping ? 1 : 0
+                  }}
+                >
+                  {tag.text}
+                </div>
+              ))}
+            </div>
           </div>
           <div className={styles.containerdetail}>
             <div className={styles.detailleft}>

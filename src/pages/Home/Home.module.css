@@ -27,17 +27,14 @@
 
 
 .box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 20px;
+    position: relative;
     margin: 20px auto;
     max-width: 80%;
-    height: 150px;
+    height: 200px;
     border: 1.5px solid #8BB0DB;
     border-radius: 30px;
-    position: relative;
     overflow: hidden;
+    background: white;
 }
 .containerdetail {
     display: flex;
@@ -46,19 +43,19 @@
 }
 
 .detailleft {
-    flex: 2; /* กำหนดให้ฝั่งซ้ายใช้พื้นที่มากกว่า */
+    flex: 2;
     display: flex;
-    flex-direction: column; /* แบ่งบนล่าง */
+    flex-direction: column;
 }
 
 .detailright {
-    flex: 1; /* กำหนดให้ฝั่งขวาใช้พื้นที่น้อยกว่า */
+    flex: 1;
     display: flex;
-    flex-direction: column; /* แบ่งบนล่าง */
+    flex-direction: column;
 }
 
 .detailleft {
-    justify-content: space-between; /* จัดการพื้นที่ระหว่างส่วนบนและล่าง */
+    justify-content: space-between;
 }
 
 .softwareskill {
@@ -76,7 +73,7 @@
 }
 
 .detailright {
-    justify-content: space-between; /* จัดการพื้นที่ระหว่างส่วนบนและล่าง */
+    justify-content: space-between;
 }
 
 .hardskill, .softskills {
@@ -100,18 +97,17 @@
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
     white-space: nowrap;
-    cursor: move;
+    cursor: grab;
     user-select: none;
     position: absolute;
-    z-index: 1;
-    transition: box-shadow 0.3s ease;
+    will-change: transform;
+    touch-action: none;
 }
 
-.hashtag:hover {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+.hashtag:active {
+    cursor: grabbing;
 }
 
-/* สำหรับการแสดงผลบนมือถือ */
 @media (max-width: 768px) {
     .containerabout {
         flex-direction: column;
@@ -159,5 +155,58 @@
     .hashtag {
         font-size: 0.7rem;
         padding: 5px 10px;
+    }
+}
+
+.boxContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 80%;
+}
+
+.dropButton {
+    padding: 10px 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: white;
+    background-color: #8BB0DB;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dropButton:hover {
+    background-color: #7a9ec9;
+    transform: translateY(-2px);
+}
+
+.dropButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.box {
+    width: 100%;
+    height: 150px;
+    border: 1.5px solid #8BB0DB;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    background: white;
+}
+
+@media (max-width: 768px) {
+    .boxContainer {
+        max-width: 95%;
+    }
+    
+    .dropButton {
+        font-size: 0.9rem;
+        padding: 8px 16px;
     }
 }
