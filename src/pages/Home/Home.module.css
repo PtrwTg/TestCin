@@ -23,19 +23,6 @@
     height: 50%;
 }
 
-
-
-
-.box {
-    position: relative;
-    margin: 20px auto;
-    max-width: 80%;
-    height: 200px;
-    border: 1.5px solid #8BB0DB;
-    border-radius: 30px;
-    overflow: hidden;
-    background: white;
-}
 .containerdetail {
     display: flex;
     width: 100%;
@@ -102,10 +89,12 @@
     position: absolute;
     will-change: transform;
     touch-action: none;
+    z-index: 1;
 }
 
 .hashtag:active {
     cursor: grabbing;
+    z-index: 2;
 }
 
 @media (max-width: 768px) {

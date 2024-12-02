@@ -16,7 +16,7 @@ import Aboutme from '../../components/Aboutme/Aboutme.jsx';
 import Preloader from '../../components/Preloader/Preloader.jsx';
 import { useSpring, animated, config } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
-import Box2DFactory from 'box2d-wasm';
+import Box2D from 'box2dweb';
 
 // นำเข้าภาพทั้งหมดทีต้องการ preload
 import figma from '../../components/Skill/figma.svg';
@@ -67,6 +67,17 @@ const Home = () => {
   const bodiesRef = useRef([]);
   const [isInitialized, setIsInitialized] = useState(false);
   const [isDropping, setIsDropping] = useState(false);
+  const [draggedBody, setDraggedBody] = useState(null);
+  const mouseJointRef = useRef(null);
+
+  // กำหนดตัวแปรสำหรับ Box2D
+  const b2Vec2 = Box2D.Common.Math.b2Vec2;
+  const b2BodyDef = Box2D.Dynamics.b2BodyDef;
+  const b2Body = Box2D.Dynamics.b2Body;
+  const b2FixtureDef = Box2D.Dynamics.b2FixtureDef;
+  const b2World = Box2D.Dynamics.b2World;
+  const b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
+  const b2MouseJointDef = Box2D.Dynamics.Joints.b2MouseJointDef;
 
   useEffect(() => {
     const images = [
@@ -165,80 +176,70 @@ const Home = () => {
   // เริ่มต้น Box2D
   useEffect(() => {
     if (!isInitialized) {
-      Box2DFactory().then(box2d => {
-        setBox2d(box2d);
-        setIsInitialized(true);
-      });
+      setBox2d(Box2D);
+      setIsInitialized(true);
     }
   }, [isInitialized]);
 
   // สร้างโลกฟิสิกส์เมื่อ box2d พร้อม
   useEffect(() => {
-    if (!box2d || !boxRef.current || !isDropping) return;
+    if (!isDropping) return;
 
-    if (worldRef.current) {
-      bodiesRef.current.forEach(body => {
-        worldRef.current.DestroyBody(body);
-      });
-      bodiesRef.current = [];
-    }
+    // สร้างโลกฟิสิกส์
+    const gravity = new b2Vec2(0, 30);
+    const world = new b2World(gravity, true);
+    worldRef.current = world;
 
-    const gravity = new box2d.b2Vec2(0, 15);
-    worldRef.current = new box2d.b2World(gravity);
-
-    const boxRect = boxRef.current.getBoundingClientRect();
     const scale = 30;
+    const boxRect = boxRef.current.getBoundingClientRect();
 
-    // สร้างขอบเขต
+    // สร้างขอบเขต (พื้นและขอบ)
     const walls = [
-      // พื้น
-      { x: boxRect.width/2, y: boxRect.height, width: boxRect.width, height: 20 },
+      // พื้น - ยยู่ที่ด้านล่างของ .box
+      { x: boxRect.width/2, y: boxRect.height, w: boxRect.width, h: 20 },
       // ซ้าย
-      { x: 0, y: boxRect.height/2, width: 20, height: boxRect.height },
+      { x: 0, y: boxRect.height/2, w: 20, h: boxRect.height },
       // ขวา
-      { x: boxRect.width, y: boxRect.height/2, width: 20, height: boxRect.height }
+      { x: boxRect.width, y: boxRect.height/2, w: 20, h: boxRect.height }
     ];
 
     walls.forEach(wall => {
-      const bodyDef = new box2d.b2BodyDef();
+      const bodyDef = new b2BodyDef();
       bodyDef.position.Set(wall.x/scale, wall.y/scale);
-      const body = worldRef.current.CreateBody(bodyDef);
-      const shape = new box2d.b2PolygonShape();
-      shape.SetAsBox(wall.width/(2*scale), wall.height/(2*scale));
-      body.CreateFixture(shape, 0);
+      const body = world.CreateBody(bodyDef);
+      const shape = new b2PolygonShape();
+      shape.SetAsBox(wall.w/(2*scale), wall.h/(2*scale));
+      body.CreateFixture2(shape, 0);
     });
 
-    // สร้าง hashtags แบบสุ่มตำแหน่ง
+    // สร้าง hashtag bodies
     hashtags.forEach((tag, index) => {
-      const bodyDef = new box2d.b2BodyDef();
-      bodyDef.type = box2d.b2_dynamicBody;
-      
-      // สุ่มตำแหน่งเริ่มต้น
-      const randomX = Math.random() * (boxRect.width - 100) + 50;
-      const randomY = -Math.random() * 500; // เริ่มจากด้านบนที่ระดับความสูงต่างกัน
-      
-      bodyDef.position.Set(randomX/scale, randomY/scale);
-      bodyDef.angle = Math.random() * Math.PI; // สุ่มการหมุนเริ่มต้น
+      const bodyDef = new b2BodyDef();
+      bodyDef.type = b2Body.b2_dynamicBody;
+      bodyDef.position.Set(
+        (50 + index * 100) / scale,
+        -(Math.random() * 100) / scale
+      );
 
-      const body = worldRef.current.CreateBody(bodyDef);
-      const shape = new box2d.b2PolygonShape();
-      const width = tag.text.length * 4;
+      const body = world.CreateBody(bodyDef);
+      const shape = new b2PolygonShape();
+      const width = tag.text.length * 3;
       shape.SetAsBox(width/scale, 15/scale);
 
-      const fixtureDef = new box2d.b2FixtureDef();
+      const fixtureDef = new b2FixtureDef();
       fixtureDef.shape = shape;
       fixtureDef.density = 1.0;
       fixtureDef.friction = 0.3;
-      fixtureDef.restitution = 0.6; // เพิ่มค่าการกระเด้ง
-
+      fixtureDef.restitution = 0.8;
       body.CreateFixture(fixtureDef);
       bodiesRef.current.push(body);
     });
 
     // อัพเดตการเคลื่อนที่
     const animate = () => {
-      worldRef.current.Step(1/60, 8, 3);
-      
+      world.Step(1/60, 10, 10);
+      world.ClearForces();
+
       bodiesRef.current.forEach((body, index) => {
         const position = body.GetPosition();
         const angle = body.GetAngle();
@@ -251,19 +252,68 @@ const Home = () => {
       requestAnimationFrame(animate);
     };
     animate();
-
-    return () => {
-      if (worldRef.current) {
-        bodiesRef.current.forEach(body => {
-          worldRef.current.DestroyBody(body);
-        });
-        bodiesRef.current = [];
-      }
-    };
-  }, [box2d, isVisible, isInitialized, isDropping]);
+  }, [isDropping]);
 
   const handleDrop = () => {
     setIsDropping(true);
+  };
+
+  const handleMouseDown = (e, index) => {
+    if (!worldRef.current || !bodiesRef.current[index]) return;
+
+    const body = bodiesRef.current[index];
+    const boxRect = boxRef.current.getBoundingClientRect();
+    const scale = 30;
+
+    const groundBody = worldRef.current.CreateBody(new b2BodyDef());
+    const mouseJointDef = new b2MouseJointDef();
+
+    mouseJointDef.bodyA = groundBody;
+    mouseJointDef.bodyB = body;
+    mouseJointDef.target.Set(
+      (e.clientX - boxRect.left) / scale,
+      (e.clientY - boxRect.top) / scale
+    );
+    mouseJointDef.maxForce = 2000000.0;
+    mouseJointDef.frequencyHz = 30.0;
+    mouseJointDef.dampingRatio = 1.0;
+
+    mouseJointRef.current = worldRef.current.CreateJoint(mouseJointDef);
+    setDraggedBody(body);
+
+    // ปิดแรงโน้มถ่วงและความเฉื่อยขณะลาก
+    body.SetGravityScale(0);
+    body.SetAngularVelocity(0);
+    body.SetLinearVelocity(new b2Vec2(0, 0));
+  };
+
+  const handleMouseMove = (e) => {
+    if (!mouseJointRef.current || !draggedBody) return;
+
+    const boxRect = boxRef.current.getBoundingClientRect();
+    const scale = 30;
+    
+    // อัพเดตตำแหน่งเป้าหมายของ mouseJoint
+    mouseJointRef.current.SetTarget(new b2Vec2(
+      (e.clientX - boxRect.left) / scale,
+      (e.clientY - boxRect.top) / scale
+    ));
+    
+    // รีเซ็ตความเร็วเพื่อป้องกันการเคลื่อนที่ที่ไม่ต้องการ
+    draggedBody.SetAngularVelocity(0);
+    draggedBody.SetLinearVelocity(new b2Vec2(0, 0));
+  };
+
+  const handleMouseUp = () => {
+    if (!worldRef.current || !mouseJointRef.current || !draggedBody) return;
+
+    worldRef.current.DestroyJoint(mouseJointRef.current);
+    mouseJointRef.current = null;
+    
+    // ทืนค่าแรงโน้มถ่วงกลับเป็นปกติ
+    draggedBody.SetGravityScale(1);
+    draggedBody.SetAwake(true);
+    setDraggedBody(null);
   };
 
   return (
@@ -296,8 +346,13 @@ const Home = () => {
                     position: 'absolute',
                     left: 0,
                     top: 0,
-                    opacity: isDropping ? 1 : 0
+                    opacity: isDropping ? 1 : 0,
+                    cursor: 'grab'
                   }}
+                  onMouseDown={(e) => handleMouseDown(e, index)}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
                 >
                   {tag.text}
                 </div>
